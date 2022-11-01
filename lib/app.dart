@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:twitter_clone/ui/sign_in/sign_in_page.dart';
+import 'package:twitter_clone/ui/sign_in/log_in_page.dart';
+import 'package:twitter_clone/ui/sign_in/welcome_page.dart';
 
 
 class AppColor {
-  static const brand = Colors.orange;
+  static const brand = Colors.red;
 }
 
 class App extends StatelessWidget {
@@ -29,7 +30,7 @@ class App extends StatelessWidget {
         //     .textTheme
         //     .apply(bodyColor: Colors.white, displayColor: Colors.white),
       ),
-      home: SignInPage(),
+      home: WelcomePage(),
     );
   }
 }
