@@ -2,20 +2,23 @@ import 'package:flutter/material.dart';
 import 'package:twitter_clone/ui/home/home_page.dart';
 import 'package:twitter_clone/ui/sign_in/widget/text_field_input.dart';
 
-class SignInPage extends StatefulWidget {
-  const SignInPage({Key? key}) : super(key: key);
+class LogInPage extends StatefulWidget {
+  const LogInPage({Key? key}) : super(key: key);
 
   @override
-  State<SignInPage> createState() => _SignInPageState();
+  State<LogInPage> createState() => _LogInPageState();
 }
 
-class _SignInPageState extends State<SignInPage> {
+class _LogInPageState extends State<LogInPage> {
   final TextEditingController _usernameController = TextEditingController();
   final TextEditingController _passwordController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        title: const Text('Log In'),
+      ),
       body: SafeArea(
         child: Container(
           padding: EdgeInsets.symmetric(horizontal: 32),
@@ -25,14 +28,6 @@ class _SignInPageState extends State<SignInPage> {
             children: [
               SizedBox(
                 height: 200,
-              ),
-              TextFieldInput(
-                hintText: 'Enter your Id',
-                textEditingController: _usernameController,
-                textInputType: TextInputType.text,
-              ),
-              SizedBox(
-                height: 50,
               ),
               TextFieldInput(
                 hintText: 'Enter your e-mail',
@@ -55,7 +50,7 @@ class _SignInPageState extends State<SignInPage> {
                   Navigator.of(context).push<void>(
                     MaterialPageRoute(
                       builder: (context) {
-                        return HomePage();
+                        return HomePage(userId: 'U6AVmd9dunXA8wqC86EW',);
                       },
                     ),
                   );

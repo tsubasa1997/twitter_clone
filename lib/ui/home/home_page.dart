@@ -13,7 +13,9 @@ import 'controller/home_controller.dart';
 
 
 class HomePage extends ConsumerWidget {
-  const HomePage({Key? key}) : super(key: key);
+  const HomePage({Key? key, required this.userId}) : super(key: key);
+
+  final String userId;
 
   String getPage(int index) {
     switch (index) {
@@ -36,7 +38,7 @@ class HomePage extends ConsumerWidget {
     return Scaffold(
       appBar: AppBar(
         title: Text(
-          getPage(index),
+          userId,
         ),
       ),
       bottomNavigationBar: CupertinoTabBar(
