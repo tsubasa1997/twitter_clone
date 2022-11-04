@@ -1,4 +1,4 @@
-import 'dart:ffi';
+
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -76,7 +76,7 @@ class HomePage extends ConsumerWidget {
       body: PageView(
         controller: ref.watch(homeStateProvider.notifier).pageController,
         physics:  const NeverScrollableScrollPhysics(),
-        children: [
+        children: const [
           TwitPage(),
           SearchPage(),
           NotificationsPage(),

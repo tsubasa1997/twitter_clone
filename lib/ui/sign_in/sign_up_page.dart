@@ -22,12 +22,12 @@ class _SignUpPageState extends State<SignUpPage> {
       ),
       body: SafeArea(
         child: Container(
-          padding: EdgeInsets.symmetric(horizontal: 32),
+          padding: const EdgeInsets.symmetric(horizontal: 32),
           width: double.infinity,
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
-              SizedBox(
+              const SizedBox(
                 height: 200,
               ),
               TextFieldInput(
@@ -35,7 +35,7 @@ class _SignUpPageState extends State<SignUpPage> {
                 textEditingController: _usernameController,
                 textInputType: TextInputType.text,
               ),
-              SizedBox(
+              const SizedBox(
                 height: 50,
               ),
               TextFieldInput(
@@ -43,7 +43,7 @@ class _SignUpPageState extends State<SignUpPage> {
                 textEditingController: _usernameController,
                 textInputType: TextInputType.text,
               ),
-              SizedBox(
+              const SizedBox(
                 height: 50,
               ),
               TextFieldInput(
@@ -51,7 +51,7 @@ class _SignUpPageState extends State<SignUpPage> {
                 textEditingController: _passwordController,
                 textInputType: TextInputType.visiblePassword,
               ),
-              SizedBox(
+              const SizedBox(
                 height: 70,
               ),
               InkWell(
@@ -59,29 +59,29 @@ class _SignUpPageState extends State<SignUpPage> {
                   Navigator.of(context).push<void>(
                     MaterialPageRoute(
                       builder: (context) {
-                        return HomePage(userId: 'U6AVmd9dunXA8wqC86EW',);
+                        return const HomePage(userId: 'U6AVmd9dunXA8wqC86EW',);
                       },
                     ),
                   );
                 },
                 child: Container(
-                  child: Text(
-                    'Sign In',
-                    style: TextStyle(
-                      fontSize: 20,
-                      color: Colors.white,
-                    ),
-                  ),
                   width: 250,
                   alignment: Alignment.center,
-                  padding: EdgeInsets.symmetric(vertical: 12),
-                  decoration: ShapeDecoration(
+                  padding: const EdgeInsets.symmetric(vertical: 12),
+                  decoration: const ShapeDecoration(
                     shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.all(
                         Radius.circular(4),
                       ),
                     ),
                     color: Colors.blue,
+                  ),
+                  child: const Text(
+                    'Sign In',
+                    style: TextStyle(
+                      fontSize: 20,
+                      color: Colors.white,
+                    ),
                   ),
                 ),
               ),

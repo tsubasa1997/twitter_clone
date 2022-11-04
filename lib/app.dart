@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:twitter_clone/ui/sign_in/log_in_page.dart';
 import 'package:twitter_clone/ui/sign_in/welcome_page.dart';
 
 
@@ -30,7 +29,7 @@ class App extends StatelessWidget {
         //     .textTheme
         //     .apply(bodyColor: Colors.white, displayColor: Colors.white),
       ),
-      home: WelcomePage(),
+      home: const WelcomePage(),
     );
   }
 }

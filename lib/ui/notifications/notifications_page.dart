@@ -10,6 +10,6 @@ class NotificationsPage extends StatefulWidget {
 class _NotificationsPageState extends State<NotificationsPage> {
   @override
   Widget build(BuildContext context) {
-    return Text('Notifi');
+    return const Text('Notifi');
   }
 }

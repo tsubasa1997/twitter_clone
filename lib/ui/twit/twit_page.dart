@@ -10,6 +10,6 @@ class TwitPage extends StatefulWidget {
 class _TwitPageState extends State<TwitPage> {
   @override
   Widget build(BuildContext context) {
-    return Text('twit');
+    return const Text('twit');
   }
 }
