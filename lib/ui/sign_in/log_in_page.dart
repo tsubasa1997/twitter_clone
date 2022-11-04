@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:twitter_clone/ui/home/home_page.dart';
+import 'package:twitter_clone/ui/home/user_page.dart';
 import 'package:twitter_clone/ui/sign_in/widget/text_field_input.dart';
 
 class LogInPage extends StatefulWidget {

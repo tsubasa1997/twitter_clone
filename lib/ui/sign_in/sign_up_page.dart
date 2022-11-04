@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:twitter_clone/ui/sign_in/widget/text_field_input.dart';
 
-import '../home/home_page.dart';
+import '../home/user_page.dart';
 
 class SignUpPage extends StatefulWidget {
   const SignUpPage({Key? key}) : super(key: key);
