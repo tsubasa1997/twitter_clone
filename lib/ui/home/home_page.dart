@@ -72,7 +72,7 @@ class HomePage extends ConsumerWidget {
         controller: ref.watch(homeStateProvider.notifier).pageController,
         physics: const NeverScrollableScrollPhysics(),
         children: [
-          const TwitPage(),
+          const TwitPage(userId: 've2eJV57E94sY7NSJs7z',),
           const SearchPage(),
           const NotificationsPage(),
           const MessagePage(),

@@ -40,7 +40,7 @@ dependencies:
   state_notifier: ^0.7.2+1
   google_fonts: ^3.0.1
   shared_preferences: ^2.0.15
-  simple_logger: ^1.9.0
+  simple_logger: ^1.9.0+1
   firebase_core: ^2.1.1
   cloud_firestore: ^4.0.3
   firebase_storage: ^11.0.3
