@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:twitter_clone/ui/home/user_page.dart';
+import 'package:twitter_clone/ui/home/my_profile_page.dart';
 
-final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
+
 
 class UserDrawer extends StatelessWidget {
   const UserDrawer({Key? key}) : super(key: key);
@@ -24,7 +24,7 @@ class UserDrawer extends StatelessWidget {
                       Navigator.of(context).push<void>(
                         MaterialPageRoute(
                           builder: (context) {
-                            return UserPage();
+                            return MyProfilePage(userId: 've2eJV57E94sY7NSJs7z',);
                           },
                         ),
                       );

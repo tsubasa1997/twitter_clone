@@ -1,10 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:twitter_clone/ui/home/provider/home_providers.dart';
-import 'package:twitter_clone/ui/twit/widgets/post_card.dart';
+import 'package:twitter_clone/ui/widget/post_card.dart';
 import 'package:twitter_clone/ui/widget/user_drawer.dart';
-
-import '../home/user_page.dart';
 import '../utils/logger.dart';
 
 class TwitPage extends ConsumerStatefulWidget {
@@ -19,11 +17,11 @@ class TwitPage extends ConsumerStatefulWidget {
 final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
 
 class _TwitPageState extends ConsumerState<TwitPage> {
+
   @override
   Widget build(BuildContext context) {
     return ref.watch(homeProvider(widget.userId)).when(
           data: (user) {
-            final userName = user.info.name;
             final posts = user.post;
 
             return Scaffold(
@@ -44,16 +42,18 @@ class _TwitPageState extends ConsumerState<TwitPage> {
                   ),
                 ),
               ),
-              drawer: UserDrawer(),
-              body: GridView.builder(
-                gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                  crossAxisCount: 1,
-                ),
-                itemCount: posts.length,
-                itemBuilder: (context, index) => PostCard(
-                  post: posts[index],
-                  onPressed: () {},
-                ),
+              drawer: const UserDrawer(),
+              body: Column(
+                children: [
+                  ListView.builder(
+                    itemCount: posts.length,
+                    itemBuilder: (context, index) => PostCard(
+                      post: posts[index],
+                      onPressed: () {},
+                      userInfo: user.info,
+                    ),
+                  ),
+                ],
               ),
             );
           },

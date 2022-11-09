@@ -4,7 +4,7 @@ import 'package:twitter_clone/ui/sign_in/welcome_page.dart';
 
 
 class AppColor {
-  static const brand = Colors.red;
+  static const brand = Colors.blue;
 }
 
 class App extends StatelessWidget {
