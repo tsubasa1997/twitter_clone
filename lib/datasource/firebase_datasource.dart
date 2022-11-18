@@ -9,11 +9,39 @@ import '../models/user_info.dart';
 
 final firestoreDatasourceProvider = Provider((_) => FirestoreDatasource(),);
 
+
 class FirestoreDatasource {
   final _db = FirebaseFirestore.instance;
 
   static const usersCollectionId = 'users';
   static const postsCollectionId = 'posts';
+
+  String createUserId() => _db.collection(usersCollectionId).doc().id;
+
+  String createPostId(String userId) => _db
+      .collection(usersCollectionId)
+      .doc(userId)
+      .collection(postsCollectionId)
+      .doc()
+      .id;
+
+  Future<void> createPost(String userId, Post post) async {
+    final ref = _db
+        .collection(usersCollectionId)
+        .doc(userId)
+        .collection(postsCollectionId)
+        .doc(post.id);
+    await ref.set(post.toJson());
+  }
+
+  Future<void> deletePost(String userId, String postId) async {
+    final ref = _db
+        .collection(usersCollectionId)
+        .doc(userId)
+        .collection(postsCollectionId)
+        .doc(postId);
+    await ref.delete();
+  }
 
 
   Future<UserInfo> fetchUserInfo(String userId) async {
@@ -56,7 +84,7 @@ class FirestoreDatasource {
     final ref = _db
         .collection(usersCollectionId)
         .doc(userId)
-        .collection(postsCollectionId);
+        .collection(postsCollectionId).orderBy('createdAt', descending: true);
     yield* ref.snapshots().map((event) {
       return event.docs.map((e) {
         final json = e.data();

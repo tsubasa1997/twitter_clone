@@ -10,6 +10,7 @@ class UserInfo with _$UserInfo {
   const factory UserInfo({
     required String id,
     required String name,
+    required String bio,
     @Default(<String>[]) List<String> tableIds,
   }) = _UserInfo;
 

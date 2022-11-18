@@ -1,11 +1,19 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:twitter_clone/ui/home/my_profile_page.dart';
 
 
 
-class UserDrawer extends StatelessWidget {
-  const UserDrawer({Key? key}) : super(key: key);
+class UserDrawer extends ConsumerStatefulWidget {
+  const UserDrawer({super.key, required this.userId});
 
+  final String userId;
+
+  @override
+  ConsumerState<UserDrawer> createState() => _UserDrawerState();
+}
+
+class _UserDrawerState extends ConsumerState<UserDrawer> {
   @override
   Widget build(BuildContext context) {
     return Drawer(

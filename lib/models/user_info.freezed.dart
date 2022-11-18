@@ -22,6 +22,7 @@ UserInfo _$UserInfoFromJson(Map<String, dynamic> json) {
 mixin _$UserInfo {
   String get id => throw _privateConstructorUsedError;
   String get name => throw _privateConstructorUsedError;
+  String get bio => throw _privateConstructorUsedError;
   List<String> get tableIds => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -35,7 +36,7 @@ abstract class $UserInfoCopyWith<$Res> {
   factory $UserInfoCopyWith(UserInfo value, $Res Function(UserInfo) then) =
       _$UserInfoCopyWithImpl<$Res, UserInfo>;
   @useResult
-  $Res call({String id, String name, List<String> tableIds});
+  $Res call({String id, String name, String bio, List<String> tableIds});
 }
 
 /// @nodoc
@@ -53,6 +54,7 @@ class _$UserInfoCopyWithImpl<$Res, $Val extends UserInfo>
   $Res call({
     Object? id = null,
     Object? name = null,
+    Object? bio = null,
     Object? tableIds = null,
   }) {
     return _then(_value.copyWith(
@@ -63,6 +65,10 @@ class _$UserInfoCopyWithImpl<$Res, $Val extends UserInfo>
       name: null == name
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
+              as String,
+      bio: null == bio
+          ? _value.bio
+          : bio // ignore: cast_nullable_to_non_nullable
               as String,
       tableIds: null == tableIds
           ? _value.tableIds
@@ -79,7 +85,7 @@ abstract class _$$_UserInfoCopyWith<$Res> implements $UserInfoCopyWith<$Res> {
       __$$_UserInfoCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({String id, String name, List<String> tableIds});
+  $Res call({String id, String name, String bio, List<String> tableIds});
 }
 
 /// @nodoc
@@ -95,6 +101,7 @@ class __$$_UserInfoCopyWithImpl<$Res>
   $Res call({
     Object? id = null,
     Object? name = null,
+    Object? bio = null,
     Object? tableIds = null,
   }) {
     return _then(_$_UserInfo(
@@ -105,6 +112,10 @@ class __$$_UserInfoCopyWithImpl<$Res>
       name: null == name
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
+              as String,
+      bio: null == bio
+          ? _value.bio
+          : bio // ignore: cast_nullable_to_non_nullable
               as String,
       tableIds: null == tableIds
           ? _value._tableIds
@@ -120,6 +131,7 @@ class _$_UserInfo with DiagnosticableTreeMixin implements _UserInfo {
   const _$_UserInfo(
       {required this.id,
       required this.name,
+      required this.bio,
       final List<String> tableIds = const <String>[]})
       : _tableIds = tableIds;
 
@@ -130,6 +142,8 @@ class _$_UserInfo with DiagnosticableTreeMixin implements _UserInfo {
   final String id;
   @override
   final String name;
+  @override
+  final String bio;
   final List<String> _tableIds;
   @override
   @JsonKey()
@@ -140,7 +154,7 @@ class _$_UserInfo with DiagnosticableTreeMixin implements _UserInfo {
 
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'UserInfo(id: $id, name: $name, tableIds: $tableIds)';
+    return 'UserInfo(id: $id, name: $name, bio: $bio, tableIds: $tableIds)';
   }
 
   @override
@@ -150,6 +164,7 @@ class _$_UserInfo with DiagnosticableTreeMixin implements _UserInfo {
       ..add(DiagnosticsProperty('type', 'UserInfo'))
       ..add(DiagnosticsProperty('id', id))
       ..add(DiagnosticsProperty('name', name))
+      ..add(DiagnosticsProperty('bio', bio))
       ..add(DiagnosticsProperty('tableIds', tableIds));
   }
 
@@ -160,13 +175,14 @@ class _$_UserInfo with DiagnosticableTreeMixin implements _UserInfo {
             other is _$_UserInfo &&
             (identical(other.id, id) || other.id == id) &&
             (identical(other.name, name) || other.name == name) &&
+            (identical(other.bio, bio) || other.bio == bio) &&
             const DeepCollectionEquality().equals(other._tableIds, _tableIds));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(
-      runtimeType, id, name, const DeepCollectionEquality().hash(_tableIds));
+  int get hashCode => Object.hash(runtimeType, id, name, bio,
+      const DeepCollectionEquality().hash(_tableIds));
 
   @JsonKey(ignore: true)
   @override
@@ -186,6 +202,7 @@ abstract class _UserInfo implements UserInfo {
   const factory _UserInfo(
       {required final String id,
       required final String name,
+      required final String bio,
       final List<String> tableIds}) = _$_UserInfo;
 
   factory _UserInfo.fromJson(Map<String, dynamic> json) = _$_UserInfo.fromJson;
@@ -194,6 +211,8 @@ abstract class _UserInfo implements UserInfo {
   String get id;
   @override
   String get name;
+  @override
+  String get bio;
   @override
   List<String> get tableIds;
   @override

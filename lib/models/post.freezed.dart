@@ -21,6 +21,8 @@ Post _$PostFromJson(Map<String, dynamic> json) {
 /// @nodoc
 mixin _$Post {
   String get id => throw _privateConstructorUsedError;
+  @CreatedAtField()
+  DateTime? get createdAt => throw _privateConstructorUsedError;
   String get tweet => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -33,7 +35,7 @@ abstract class $PostCopyWith<$Res> {
   factory $PostCopyWith(Post value, $Res Function(Post) then) =
       _$PostCopyWithImpl<$Res, Post>;
   @useResult
-  $Res call({String id, String tweet});
+  $Res call({String id, @CreatedAtField() DateTime? createdAt, String tweet});
 }
 
 /// @nodoc
@@ -50,6 +52,7 @@ class _$PostCopyWithImpl<$Res, $Val extends Post>
   @override
   $Res call({
     Object? id = null,
+    Object? createdAt = freezed,
     Object? tweet = null,
   }) {
     return _then(_value.copyWith(
@@ -57,6 +60,10 @@ class _$PostCopyWithImpl<$Res, $Val extends Post>
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
               as String,
+      createdAt: freezed == createdAt
+          ? _value.createdAt
+          : createdAt // ignore: cast_nullable_to_non_nullable
+              as DateTime?,
       tweet: null == tweet
           ? _value.tweet
           : tweet // ignore: cast_nullable_to_non_nullable
@@ -71,7 +78,7 @@ abstract class _$$_PostCopyWith<$Res> implements $PostCopyWith<$Res> {
       __$$_PostCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({String id, String tweet});
+  $Res call({String id, @CreatedAtField() DateTime? createdAt, String tweet});
 }
 
 /// @nodoc
@@ -84,6 +91,7 @@ class __$$_PostCopyWithImpl<$Res> extends _$PostCopyWithImpl<$Res, _$_Post>
   @override
   $Res call({
     Object? id = null,
+    Object? createdAt = freezed,
     Object? tweet = null,
   }) {
     return _then(_$_Post(
@@ -91,6 +99,10 @@ class __$$_PostCopyWithImpl<$Res> extends _$PostCopyWithImpl<$Res, _$_Post>
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
               as String,
+      createdAt: freezed == createdAt
+          ? _value.createdAt
+          : createdAt // ignore: cast_nullable_to_non_nullable
+              as DateTime?,
       tweet: null == tweet
           ? _value.tweet
           : tweet // ignore: cast_nullable_to_non_nullable
@@ -102,19 +114,23 @@ class __$$_PostCopyWithImpl<$Res> extends _$PostCopyWithImpl<$Res, _$_Post>
 /// @nodoc
 @JsonSerializable()
 class _$_Post with DiagnosticableTreeMixin implements _Post {
-  const _$_Post({required this.id, this.tweet = ''});
+  const _$_Post(
+      {required this.id, @CreatedAtField() this.createdAt, this.tweet = ''});
 
   factory _$_Post.fromJson(Map<String, dynamic> json) => _$$_PostFromJson(json);
 
   @override
   final String id;
   @override
+  @CreatedAtField()
+  final DateTime? createdAt;
+  @override
   @JsonKey()
   final String tweet;
 
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'Post(id: $id, tweet: $tweet)';
+    return 'Post(id: $id, createdAt: $createdAt, tweet: $tweet)';
   }
 
   @override
@@ -123,6 +139,7 @@ class _$_Post with DiagnosticableTreeMixin implements _Post {
     properties
       ..add(DiagnosticsProperty('type', 'Post'))
       ..add(DiagnosticsProperty('id', id))
+      ..add(DiagnosticsProperty('createdAt', createdAt))
       ..add(DiagnosticsProperty('tweet', tweet));
   }
 
@@ -132,12 +149,14 @@ class _$_Post with DiagnosticableTreeMixin implements _Post {
         (other.runtimeType == runtimeType &&
             other is _$_Post &&
             (identical(other.id, id) || other.id == id) &&
+            (identical(other.createdAt, createdAt) ||
+                other.createdAt == createdAt) &&
             (identical(other.tweet, tweet) || other.tweet == tweet));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(runtimeType, id, tweet);
+  int get hashCode => Object.hash(runtimeType, id, createdAt, tweet);
 
   @JsonKey(ignore: true)
   @override
@@ -154,12 +173,18 @@ class _$_Post with DiagnosticableTreeMixin implements _Post {
 }
 
 abstract class _Post implements Post {
-  const factory _Post({required final String id, final String tweet}) = _$_Post;
+  const factory _Post(
+      {required final String id,
+      @CreatedAtField() final DateTime? createdAt,
+      final String tweet}) = _$_Post;
 
   factory _Post.fromJson(Map<String, dynamic> json) = _$_Post.fromJson;
 
   @override
   String get id;
+  @override
+  @CreatedAtField()
+  DateTime? get createdAt;
   @override
   String get tweet;
   @override

@@ -18,6 +18,7 @@ class TwitPage extends ConsumerStatefulWidget {
 final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
 
 class _TwitPageState extends ConsumerState<TwitPage> {
+  ScrollController _scrollController = ScrollController();
   @override
   Widget build(BuildContext context) {
     return ref.watch(homeProvider(widget.userId)).when(
@@ -26,7 +27,7 @@ class _TwitPageState extends ConsumerState<TwitPage> {
 
             return Scaffold(
               floatingActionButton: FloatingActionButton(
-                child: Icon(Icons.comment),
+                child: Icon(Icons.add),
                 onPressed: () {
                   Navigator.of(context).push(
                     MaterialPageRoute(
@@ -54,18 +55,23 @@ class _TwitPageState extends ConsumerState<TwitPage> {
                   ),
                 ),
               ),
-              drawer: const UserDrawer(),
-              body: Column(
+              drawer: UserDrawer(userId: user.id,),
+              body: ListView(
                 children: [
-                  ListView.builder(
-                    shrinkWrap: true,
-                    itemCount: posts.length,
-                    itemBuilder: (context, index) => PostCard(
-                      post: posts[index],
-                      onPressed: () {},
-                      userInfo: user.info,
+                  Column(
+                  children: [
+                    ListView.builder(
+                      controller: _scrollController,
+                      shrinkWrap: true,
+                      itemCount: posts.length,
+                      itemBuilder: (context, index) => PostCard(
+                        post: posts[index],
+                        onPressed: () {},
+                        userInfo: user.info,
+                      ),
                     ),
-                  ),
+                  ],
+                ),
                 ],
               ),
             );

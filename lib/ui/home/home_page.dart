@@ -71,11 +71,11 @@ class HomePage extends ConsumerWidget {
       body: PageView(
         controller: ref.watch(homeStateProvider.notifier).pageController,
         physics: const NeverScrollableScrollPhysics(),
-        children: [
-          const TwitPage(userId: 've2eJV57E94sY7NSJs7z',),
-          const SearchPage(),
-          const NotificationsPage(),
-          const MessagePage(),
+        children: const [
+          TwitPage(userId: 've2eJV57E94sY7NSJs7z',),
+          SearchPage(userId: 've2eJV57E94sY7NSJs7z',),
+          NotificationsPage(userId: 've2eJV57E94sY7NSJs7z',),
+          MessagePage(userId: 've2eJV57E94sY7NSJs7z',),
         ],
       ),
     );

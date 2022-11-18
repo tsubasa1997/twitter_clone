@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:twitter_clone/ui/widget/post_detail.dart';
 
 import '../../models/post.dart';
 import '../../models/user_info.dart';
@@ -29,7 +30,19 @@ class _PostCardState extends State<PostCard> {
         border: Border.all(color: Colors.blue),
       ),
       child: InkWell(
-        onTap: () {},
+        onTap: () {
+          Navigator.of(context).push<void>(
+            MaterialPageRoute(
+              builder: (context) {
+                return PostDetail(
+                  onPressed: () {},
+                  userInfo: widget.userInfo,
+                  post: widget.post,
+                );
+              },
+            ),
+          );
+        },
         child: Padding(
           padding: EdgeInsets.symmetric(horizontal: 20, vertical: 10),
           child: Column(
@@ -52,7 +65,7 @@ class _PostCardState extends State<PostCard> {
                     ),
                   ),
                   SizedBox(
-                    width: 10,
+                    width: 3,
                   ),
                   Text(widget.userInfo.id),
                 ],
@@ -65,6 +78,14 @@ class _PostCardState extends State<PostCard> {
                 child: Text(
                   widget.post.tweet,
                 ),
+              ),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.end,
+                children: [
+                  Text(
+                    widget.post.createdAt.toString(),
+                  ),
+                ],
               ),
             ],
           ),

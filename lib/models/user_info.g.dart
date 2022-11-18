@@ -9,6 +9,7 @@ part of 'user_info.dart';
 _$_UserInfo _$$_UserInfoFromJson(Map<String, dynamic> json) => _$_UserInfo(
       id: json['id'] as String,
       name: json['name'] as String,
+      bio: json['bio'] as String,
       tableIds: (json['tableIds'] as List<dynamic>?)
               ?.map((e) => e as String)
               .toList() ??
@@ -19,5 +20,6 @@ Map<String, dynamic> _$$_UserInfoToJson(_$_UserInfo instance) =>
     <String, dynamic>{
       'id': instance.id,
       'name': instance.name,
+      'bio': instance.bio,
       'tableIds': instance.tableIds,
     };
