@@ -1,4 +1,4 @@
-import 'dart:ffi';
+
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -7,13 +7,14 @@ import 'package:twitter_clone/app.dart';
 import 'package:twitter_clone/ui/message/message_page.dart';
 import 'package:twitter_clone/ui/notifications/notifications_page.dart';
 import 'package:twitter_clone/ui/search/search_page.dart';
-import 'package:twitter_clone/ui/twit/twit_page.dart';
 
+
+import '../tweet/twit_page.dart';
 import 'controller/home_controller.dart';
 
 
 class HomePage extends ConsumerWidget {
-  const HomePage({Key? key, required this.userId}) : super(key: key);
+   const HomePage({Key? key, required this.userId}) : super(key: key);
 
   final String userId;
 
@@ -36,11 +37,6 @@ class HomePage extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final index = ref.watch(homeStateProvider);
     return Scaffold(
-      appBar: AppBar(
-        title: Text(
-          userId,
-        ),
-      ),
       bottomNavigationBar: CupertinoTabBar(
         backgroundColor: Colors.white,
         items: [
@@ -75,12 +71,12 @@ class HomePage extends ConsumerWidget {
       ),
       body: PageView(
         controller: ref.watch(homeStateProvider.notifier).pageController,
-        physics:  const NeverScrollableScrollPhysics(),
-        children: [
-          TwitPage(),
-          SearchPage(),
-          NotificationsPage(),
-          MessagePage(),
+        physics: const NeverScrollableScrollPhysics(),
+        children: const [
+          TwitPage(userId: 've2eJV57E94sY7NSJs7z',),
+          SearchPage(userId: 've2eJV57E94sY7NSJs7z',),
+          NotificationsPage(userId: 've2eJV57E94sY7NSJs7z',),
+          MessagePage(userId: 've2eJV57E94sY7NSJs7z',),
         ],
       ),
     );
