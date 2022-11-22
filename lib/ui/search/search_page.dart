@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:twitter_clone/models/users.dart';
+import 'package:twitter_clone/ui/search/widget/user_card.dart';
 
 import '../home/provider/home_providers.dart';
 import '../utils/logger.dart';
@@ -58,6 +59,11 @@ class _SearchPageState extends ConsumerState<SearchPage> {
                 ),
               ),
               drawer: UserDrawer(userId: user.id),
+              body: ListView(
+                children: [
+                  UserCard(),
+                ],
+              ),
             );
           },
           error: (error, __) {

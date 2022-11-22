@@ -64,7 +64,7 @@ class FirestoreDatasource {
     return UserInfo.fromJson(json);
   }
 
-  Stream<List<Users>> fetchUsers() async* {
+  Stream<List<Users>> allUsers() async* {
     final ref = _db
         .collection(usersCollectionId);
     yield* ref.snapshots().map((event) {

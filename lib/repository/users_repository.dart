@@ -16,12 +16,12 @@ class UsersRepository {
   FirestoreDatasource get _remote => ref.read(firestoreDatasourceProvider);
 
 
-  Stream<Users> listenUsers() async* {
-    final info = await _remote.fetchUsers();
+  Stream<Users> allUsers() async* {
+    final info = await _remote.allUsers();
     if (info == null) {
       throw NotFindReferenceException(ref: null!);
     }
-    yield* _remote.fetchUsers().map(
+    yield* _remote.allUsers().map(
           (event) => Users(),
     );
   }
