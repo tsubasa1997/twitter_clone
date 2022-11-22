@@ -5,7 +5,10 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import '../common/exceptions/not_find_store_exception.dart';
 import '../models/post.dart';
+
+import '../models/user.dart';
 import '../models/user_info.dart';
+import '../models/users.dart';
 
 final firestoreDatasourceProvider = Provider((_) => FirestoreDatasource(),);
 
@@ -42,6 +45,13 @@ class FirestoreDatasource {
         .doc(postId);
     await ref.delete();
   }
+  
+  Future<void> UpdateProfile(UserInfo info, UserInfo userInfo) async {
+    final ref = _db
+        .collection(usersCollectionId)
+        .doc(info.id);
+    await ref.update(info.toJson());
+  }
 
 
   Future<UserInfo> fetchUserInfo(String userId) async {
@@ -52,6 +62,17 @@ class FirestoreDatasource {
       throw NotFindReferenceException(ref: ref);
     }
     return UserInfo.fromJson(json);
+  }
+
+  Stream<List<Users>> fetchUsers() async* {
+    final ref = _db
+        .collection(usersCollectionId);
+    yield* ref.snapshots().map((event) {
+      return event.docs.map((e) {
+        final json = e.data();
+        return Users.fromJson(json);
+      }).toList();
+    });
   }
 
   Stream<UserInfo> listenUserInfo(String userId) async* {
@@ -92,4 +113,7 @@ class FirestoreDatasource {
       }).toList();
     });
   }
+
+
+
 }

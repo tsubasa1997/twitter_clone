@@ -27,12 +27,12 @@ class _TwitPageState extends ConsumerState<TwitPage> {
 
             return Scaffold(
               floatingActionButton: FloatingActionButton(
-                child: Icon(Icons.add),
+                child: const Icon(Icons.add),
                 onPressed: () {
                   Navigator.of(context).push(
                     MaterialPageRoute(
                       builder: (context) {
-                        return TweetCart();
+                        return const TweetCart();
                       },
                     ),
                   );
@@ -41,7 +41,7 @@ class _TwitPageState extends ConsumerState<TwitPage> {
               backgroundColor: Colors.white,
               key: _scaffoldKey,
               appBar: AppBar(
-                title: Text(
+                title: const Text(
                   'home',
                 ),
                 leading: IconButton(

@@ -25,173 +25,176 @@ class _MyProfilePageState extends ConsumerState<MyProfilePage> {
   @override
   Widget build(BuildContext context) {
     return ref.watch(homeProvider(widget.userId)).when(
-          data: (user) {
-            final userName = user.info.name;
-            final userBio = user.info.bio;
-            final posts = user.post;
+      data: (user) {
+        final userName = user.info.name;
+        final userBio = user.info.bio;
+        final posts = user.post;
 
-            return Scaffold(
-              floatingActionButton: FloatingActionButton(
-                child: Icon(Icons.add),
-                onPressed: () {
-                  Navigator.of(context).push(
-                    MaterialPageRoute(
-                      builder: (context) {
-                        return TweetCart();
-                      },
-                    ),
-                  );
-                },
-              ),
-              body: ListView(
+        return Scaffold(
+          floatingActionButton: FloatingActionButton(
+            child: const Icon(Icons.add),
+            onPressed: () {
+              Navigator.of(context).push(
+                MaterialPageRoute(
+                  builder: (context) {
+                    return const TweetCart();
+                  },
+                ),
+              );
+            },
+          ),
+          body: ListView(
+            children: [
+              Column(
                 children: [
-                  Column(
+                  ListView(
+                    shrinkWrap: true,
+                    physics: const BouncingScrollPhysics(
+                        parent: AlwaysScrollableScrollPhysics()),
                     children: [
-                      ListView(
-                        shrinkWrap: true,
-                        physics: const BouncingScrollPhysics(
-                            parent: AlwaysScrollableScrollPhysics()),
-                        children: [
-                          Container(
-                            height: 150,
-                            decoration: const BoxDecoration(
-                              color: Colors.blue,
+                      Container(
+                        height: 150,
+                        decoration: const BoxDecoration(
+                          color: Colors.blue,
+                        ),
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.start,
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            const SizedBox.shrink(),
+                            IconButton(
+                              onPressed: () {
+                                Navigator.of(context).pop();
+                              },
+                              icon: const Icon(
+                                Icons.arrow_back,
+                                color: Colors.white,
+                              ),
                             ),
-                            child: Row(
-                              mainAxisAlignment: MainAxisAlignment.start,
-                              crossAxisAlignment: CrossAxisAlignment.start,
+                          ],
+                        ),
+                      ),
+                      Container(
+                        transform:
+                        Matrix4.translationValues(0.0, -40.0, 0.0),
+                        padding: const EdgeInsets.symmetric(horizontal: 20),
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Row(
+                              mainAxisAlignment:
+                              MainAxisAlignment.spaceBetween,
+                              crossAxisAlignment: CrossAxisAlignment.end,
                               children: [
-                                const SizedBox.shrink(),
-                                IconButton(
-                                  onPressed: () {
-                                    Navigator.of(context).pop();
-                                  },
-                                  icon: const Icon(
-                                    Icons.arrow_back,
-                                    color: Colors.white,
+                                const CircleAvatar(
+                                    radius: 45,
+                                    backgroundImage:
+                                    const NetworkImage('')),
+                                Container(
+                                  width: 120,
+                                  height: 45,
+                                  decoration: BoxDecoration(
+                                    border: Border.all(color: Colors.blue),
+                                    borderRadius: BorderRadius.circular(40),
                                   ),
-                                ),
-                              ],
-                            ),
-                          ),
-                          Container(
-                            transform:
-                                Matrix4.translationValues(0.0, -40.0, 0.0),
-                            padding: const EdgeInsets.symmetric(horizontal: 20),
-                            child: Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                Row(
-                                  mainAxisAlignment:
-                                      MainAxisAlignment.spaceBetween,
-                                  crossAxisAlignment: CrossAxisAlignment.end,
-                                  children: [
-                                    const CircleAvatar(
-                                        radius: 45,
-                                        backgroundImage:
-                                            const NetworkImage('')),
-                                    Container(
-                                      width: 120,
-                                      height: 45,
-                                      decoration: BoxDecoration(
-                                        border: Border.all(color: Colors.blue),
-                                        borderRadius: BorderRadius.circular(40),
-                                      ),
-                                      child: TextButton(
-                                        onPressed: () {
-                                          showModalBottomSheet(
-                                            context: context,
-                                            builder: (BuildContext context) {
-                                              return EditProfile(
-                                               userInfoName: user.info.name, userInfoBio: user.info.bio,
-                                              );
-                                            },
+                                  child: TextButton(
+                                    onPressed: () {
+                                      showModalBottomSheet(
+                                        context: context,
+                                        builder: (BuildContext context) {
+                                          return EditProfile(
+                                              userInfoName: user.info.name,
+                                              userInfoBio: user.info.bio,
+                                              userInfoId: user.info.id,
+                                              userId: user.id ,
                                           );
                                         },
-                                        child: Text(
-                                          '編集',
-                                          style: TextStyle(
-                                            fontSize: 20,
-                                          ),
-                                        ),
+                                      );
+                                    },
+                                    child: const Text(
+                                      '編集',
+                                      style: TextStyle(
+                                        fontSize: 20,
                                       ),
                                     ),
-                                  ],
-                                ),
-                                const SizedBox(height: 10),
-                                Text(
-                                  userName,
-                                  style: const TextStyle(
-                                    fontSize: 20,
-                                    fontWeight: FontWeight.bold,
                                   ),
                                 ),
-                                const SizedBox(height: 10),
-                                Text(
-                                  userBio != null
-                                  ? userBio
-                                  : '',
-                                  style: const TextStyle(
-                                    fontSize: 15,
-                                  ),
-                                ),
-                                const SizedBox(height: 15),
-                                Row(
-                                  children: const [
-                                    Text(
-                                      '200 フォロー',
-                                      style: TextStyle(
-                                        fontSize: 16,
-                                        fontWeight: FontWeight.w500,
-                                        letterSpacing: 2,
-                                      ),
-                                    ),
-                                    SizedBox(width: 20),
-                                    Text(
-                                      '2000 フォロワー',
-                                      style: TextStyle(
-                                        fontSize: 16,
-                                        fontWeight: FontWeight.w500,
-                                        letterSpacing: 2,
-                                      ),
-                                    ),
-                                  ],
-                                ),
-                                const SizedBox(height: 20),
                               ],
                             ),
-                          ),
-                        ],
-                      ),
-                    ],
-                  ),
-                  Column(
-                    children: [
-                      ListView.builder(
-                        controller: _scrollController,
-                        shrinkWrap: true,
-                        itemCount: posts.length,
-                        itemBuilder: (context, index) => PostCard(
-                          post: posts[index],
-                          onPressed: () {},
-                          userInfo: user.info,
+                            const SizedBox(height: 10),
+                            Text(
+                              userName,
+                              style: const TextStyle(
+                                fontSize: 20,
+                                fontWeight: FontWeight.bold,
+                              ),
+                            ),
+                            const SizedBox(height: 10),
+                            Text(
+                              userBio ?? '',
+                              style: const TextStyle(
+                                fontSize: 15,
+                              ),
+                            ),
+                            const SizedBox(height: 15),
+                            Row(
+                              children: const [
+                                Text(
+                                  '200 フォロー',
+                                  style: TextStyle(
+                                    fontSize: 16,
+                                    fontWeight: FontWeight.w500,
+                                    letterSpacing: 2,
+                                  ),
+                                ),
+                                SizedBox(width: 20),
+                                Text(
+                                  '2000 フォロワー',
+                                  style: TextStyle(
+                                    fontSize: 16,
+                                    fontWeight: FontWeight.w500,
+                                    letterSpacing: 2,
+                                  ),
+                                ),
+                              ],
+                            ),
+                            const SizedBox(height: 20),
+                          ],
                         ),
                       ),
                     ],
                   ),
                 ],
               ),
-            );
-          },
-          error: (error, __) {
-            logger.warning(error);
-            return const Center(
-              child: Text('error'),
-            );
-          },
-          loading: () => const Center(
-            child: CircularProgressIndicator(),
+              Column(
+                children: [
+                  ListView.builder(
+                    controller: _scrollController,
+                    shrinkWrap: true,
+                    itemCount: posts.length,
+                    itemBuilder: (context, index) =>
+                        PostCard(
+                          post: posts[index],
+                          onPressed: () {},
+                          userInfo: user.info,
+                        ),
+                  ),
+                ],
+              ),
+            ],
           ),
         );
+      },
+      error: (error, __) {
+        logger.warning(error);
+        return const Center(
+          child: Text('error'),
+        );
+      },
+      loading: () =>
+      const Center(
+        child: CircularProgressIndicator(),
+      ),
+    );
   }
 }

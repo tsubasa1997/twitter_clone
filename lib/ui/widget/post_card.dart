@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:twitter_clone/ui/widget/post_detail.dart';
 
 import '../../models/post.dart';
 import '../../models/user_info.dart';
+import '../tweet/controller/tweet_controller.dart';
 
-class PostCard extends StatefulWidget {
+class PostCard extends ConsumerStatefulWidget {
   const PostCard({
     super.key,
     required this.post,
@@ -17,10 +19,10 @@ class PostCard extends StatefulWidget {
   final VoidCallback onPressed;
 
   @override
-  State<PostCard> createState() => _PostCardState();
+  ConsumerState<PostCard> createState() => _PostCardState();
 }
 
-class _PostCardState extends State<PostCard> {
+class _PostCardState extends ConsumerState<PostCard> {
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -44,37 +46,64 @@ class _PostCardState extends State<PostCard> {
           );
         },
         child: Padding(
-          padding: EdgeInsets.symmetric(horizontal: 20, vertical: 10),
+          padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Row(
                 children: [
-                  CircleAvatar(
+                  const CircleAvatar(
                     radius: 20,
-                    backgroundImage: NetworkImage(''),
+                    backgroundImage: const NetworkImage(''),
                   ),
-                  SizedBox(
+                  const SizedBox(
                     width: 10,
                   ),
                   Text(
                     widget.userInfo.name,
-                    style: TextStyle(
+                    style: const TextStyle(
                       fontSize: 20,
                       fontWeight: FontWeight.bold,
                     ),
                   ),
-                  SizedBox(
+                  const SizedBox(
                     width: 3,
                   ),
                   Text(widget.userInfo.id),
+                  IconButton(
+                    onPressed: () {
+                      showDialog(
+                        context: context,
+                        builder: (context) {
+                          return SimpleDialog(
+                            children: [
+                              SimpleDialogOption(
+                                onPressed: () {
+                                  ref
+                                      .read(tweetStateProvider.notifier)
+                                      .deleteTweet(
+                                    userId: widget.userInfo.id,
+                                    postId: widget.post.id,
+                                  );
+                                  Navigator.of(context).pop();
+                                  Navigator.of(context).pop();
+                                },
+                                child: const Text('ツイートを削除'),
+                              ),
+                            ],
+                          );
+                        },
+                      );
+                    },
+                    icon: const Icon(Icons.pending),
+                  ),
                 ],
               ),
-              SizedBox(
+              const SizedBox(
                 height: 10,
               ),
               Container(
-                margin: EdgeInsets.symmetric(horizontal: 40),
+                margin: const EdgeInsets.symmetric(horizontal: 40),
                 child: Text(
                   widget.post.tweet,
                 ),

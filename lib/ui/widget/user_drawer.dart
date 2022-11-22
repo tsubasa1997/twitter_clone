@@ -45,11 +45,11 @@ class _UserDrawerState extends ConsumerState<UserDrawer> {
                   ),
                   const Text(
                     'Name',
-                    style: const TextStyle(fontSize: 25),
+                    style: TextStyle(fontSize: 25),
                   ),
                   const Text(
                     '@xxxxxx',
-                    style: const TextStyle(fontSize: 15),
+                    style: TextStyle(fontSize: 15),
                   ),
                   const SizedBox(
                     height: 10,

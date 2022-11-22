@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:twitter_clone/ui/home/controller/tweet_controller.dart';
+import 'package:twitter_clone/ui/tweet/controller/tweet_controller.dart';
 
 import '../../models/post.dart';
 import '../../models/user_info.dart';
@@ -27,12 +27,12 @@ class _PostDetailState extends ConsumerState<PostDetail> {
     return Scaffold(
       backgroundColor: Colors.white,
       appBar: AppBar(
-        title: Text('ツイート'),
+        title: const Text('ツイート'),
       ),
       body: SafeArea(
         child: Column(
           children: [
-            SizedBox(
+            const SizedBox(
               height: 10,
             ),
             Row(
@@ -41,19 +41,19 @@ class _PostDetailState extends ConsumerState<PostDetail> {
                 Row(
                   mainAxisAlignment: MainAxisAlignment.start,
                   children: [
-                    SizedBox(
+                    const SizedBox(
                       width: 20,
                     ),
-                    CircleAvatar(
+                    const CircleAvatar(
                       radius: 25,
-                      backgroundImage: NetworkImage(''),
+                      backgroundImage: const NetworkImage(''),
                     ),
-                    SizedBox(
+                    const SizedBox(
                       width: 10,
                     ),
                     Text(
                       widget.userInfo.name,
-                      style: TextStyle(fontSize: 20),
+                      style: const TextStyle(fontSize: 20),
                     ),
                   ],
                 ),
@@ -78,7 +78,7 @@ class _PostDetailState extends ConsumerState<PostDetail> {
                                     Navigator.of(context).pop();
                                     Navigator.of(context).pop();
                                   },
-                                  child: Text('ツイートを削除'),
+                                  child: const Text('ツイートを削除'),
                                 ),
                               ],
                             );
@@ -95,10 +95,10 @@ class _PostDetailState extends ConsumerState<PostDetail> {
               mainAxisAlignment: MainAxisAlignment.start,
               children: [
                 Container(
-                  padding: EdgeInsets.symmetric(horizontal: 70, vertical: 20),
+                  padding: const EdgeInsets.symmetric(horizontal: 70, vertical: 20),
                   child: Text(
                     widget.post.tweet,
-                    style: TextStyle(
+                    style: const TextStyle(
                       fontSize: 20,
                     ),
                   ),
@@ -109,7 +109,7 @@ class _PostDetailState extends ConsumerState<PostDetail> {
               mainAxisAlignment: MainAxisAlignment.start,
               children: [
                 Container(
-                  padding: EdgeInsets.symmetric(
+                  padding: const EdgeInsets.symmetric(
                     horizontal: 20,
                     vertical: 20,
                   ),
@@ -119,7 +119,7 @@ class _PostDetailState extends ConsumerState<PostDetail> {
                 ),
               ],
             ),
-            Divider(
+            const Divider(
               thickness: 3,
             ),
             Row(
@@ -127,19 +127,19 @@ class _PostDetailState extends ConsumerState<PostDetail> {
               children: [
                 IconButton(
                   onPressed: () {},
-                  icon: Icon(Icons.repeat),
+                  icon: const Icon(Icons.repeat),
                 ),
                 IconButton(
                   onPressed: () {},
-                  icon: Icon(Icons.favorite_border),
+                  icon: const Icon(Icons.favorite_border),
                 ),
                 IconButton(
                   onPressed: () {},
-                  icon: Icon(Icons.comment),
+                  icon: const Icon(Icons.comment),
                 ),
                 IconButton(
                   onPressed: () {},
-                  icon: Icon(Icons.upload),
+                  icon: const Icon(Icons.upload),
                 ),
               ],
             ),

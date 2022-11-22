@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:twitter_clone/ui/home/controller/tweet_controller.dart';
+import 'package:twitter_clone/ui/tweet/controller/tweet_controller.dart';
 
 class TweetCart extends ConsumerStatefulWidget {
   const TweetCart({Key? key}) : super(key: key);
@@ -32,9 +32,9 @@ class _TweetCartState extends ConsumerState<TweetCart> {
                   onPressed: () {
                     Navigator.of(context).pop();
                   },
-                  child: Text(
+                  child: const Text(
                     'キャンセル',
-                    style: TextStyle(
+                    style: const TextStyle(
                       fontSize: 20,
                     ),
                   ),
@@ -43,9 +43,9 @@ class _TweetCartState extends ConsumerState<TweetCart> {
                   children: [
                     TextButton(
                       onPressed: () {},
-                      child: Text('下書き'),
+                      child: const Text('下書き'),
                     ),
-                    SizedBox(
+                    const SizedBox(
                       width: 5,
                     ),
                     Container(
@@ -64,26 +64,26 @@ class _TweetCartState extends ConsumerState<TweetCart> {
                               );
                           Navigator.of(context).pop();
                         },
-                        child: Text('ツイートする'),
+                        child: const Text('ツイートする'),
                       ),
                     ),
                   ],
                 ),
               ],
             ),
-            SizedBox(
+            const SizedBox(
               height: 20,
             ),
             Row(
               children: [
-                SizedBox(
+                const SizedBox(
                   width: 30,
                 ),
-                CircleAvatar(
+                const CircleAvatar(
                   radius: 25,
-                  backgroundImage: NetworkImage(''),
+                  backgroundImage: const NetworkImage(''),
                 ),
-                SizedBox(
+                const SizedBox(
                   width: 5,
                 ),
                 Container(
@@ -104,17 +104,17 @@ class _TweetCartState extends ConsumerState<TweetCart> {
               ],
             ),
             Container(
-              padding: EdgeInsets.symmetric(
+              padding: const EdgeInsets.symmetric(
                 horizontal: 50,
               ),
               child: TextField(
                 controller: _tweetController,
-                style: TextStyle(
+                style: const TextStyle(
                   fontSize: 25,
                 ),
                 keyboardType: TextInputType.multiline,
                 maxLines: null,
-                decoration: InputDecoration(
+                decoration: const InputDecoration(
                   hintText: 'いまなにしてる？',
                   enabledBorder: InputBorder.none,
                   focusedBorder: InputBorder.none,

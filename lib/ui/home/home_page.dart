@@ -7,13 +7,14 @@ import 'package:twitter_clone/app.dart';
 import 'package:twitter_clone/ui/message/message_page.dart';
 import 'package:twitter_clone/ui/notifications/notifications_page.dart';
 import 'package:twitter_clone/ui/search/search_page.dart';
-import 'package:twitter_clone/ui/twit/twit_page.dart';
 
+
+import '../tweet/twit_page.dart';
 import 'controller/home_controller.dart';
 
 
 class HomePage extends ConsumerWidget {
-   HomePage({Key? key, required this.userId}) : super(key: key);
+   const HomePage({Key? key, required this.userId}) : super(key: key);
 
   final String userId;
 

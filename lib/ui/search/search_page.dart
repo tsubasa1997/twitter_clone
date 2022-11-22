@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:twitter_clone/models/users.dart';
 
 import '../home/provider/home_providers.dart';
 import '../utils/logger.dart';
@@ -22,7 +23,6 @@ class _SearchPageState extends ConsumerState<SearchPage> {
     return ref.watch(homeProvider(widget.userId)).when(
           data: (user) {
             final posts = user.post;
-
             return Scaffold(
               key: _scaffoldKey,
               appBar: AppBar(
