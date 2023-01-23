@@ -1,15 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:twitter_clone/models/user_info.dart';
-import 'package:twitter_clone/ui/search/user_profile_page.dart';
 
+import '../../models/follower.dart';
 
-class UserCard extends ConsumerWidget {
-  const UserCard({super.key, required this.userInfo,required this.uid,});
+class FollowerUserCard extends ConsumerWidget {
+  const FollowerUserCard({super.key, required this.follower});
 
-  final UserInfo userInfo;
-  final String uid;
-
+  final Follower follower;
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     return Container(
@@ -20,9 +17,6 @@ class UserCard extends ConsumerWidget {
       ),
       child: InkWell(
         onTap: () {
-          Navigator.of(context).push(MaterialPageRoute(builder: (context) {
-            return UserProfilePage(userId: userInfo.id, uid: uid,);
-          }));
         },
         child: Padding(
           padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
@@ -39,7 +33,7 @@ class UserCard extends ConsumerWidget {
                     width: 10,
                   ),
                   Text(
-                    userInfo.name,
+                    follower.name,
                     style: const TextStyle(
                       fontSize: 20,
                       fontWeight: FontWeight.bold,
@@ -48,7 +42,6 @@ class UserCard extends ConsumerWidget {
                   const SizedBox(
                     width: 3,
                   ),
-                  Text(userInfo.id),
                 ],
               ),
               const SizedBox(
@@ -58,7 +51,7 @@ class UserCard extends ConsumerWidget {
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   Text(
-                    userInfo.bio,
+                    follower.bio,
                   ),
                 ],
               ),

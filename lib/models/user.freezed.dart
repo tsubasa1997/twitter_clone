@@ -23,6 +23,8 @@ mixin _$User {
   String get id => throw _privateConstructorUsedError;
   UserInfo get info => throw _privateConstructorUsedError;
   List<Post> get post => throw _privateConstructorUsedError;
+  List<Following> get following => throw _privateConstructorUsedError;
+  List<Follower> get follower => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -34,7 +36,12 @@ abstract class $UserCopyWith<$Res> {
   factory $UserCopyWith(User value, $Res Function(User) then) =
       _$UserCopyWithImpl<$Res, User>;
   @useResult
-  $Res call({String id, UserInfo info, List<Post> post});
+  $Res call(
+      {String id,
+      UserInfo info,
+      List<Post> post,
+      List<Following> following,
+      List<Follower> follower});
 
   $UserInfoCopyWith<$Res> get info;
 }
@@ -55,6 +62,8 @@ class _$UserCopyWithImpl<$Res, $Val extends User>
     Object? id = null,
     Object? info = null,
     Object? post = null,
+    Object? following = null,
+    Object? follower = null,
   }) {
     return _then(_value.copyWith(
       id: null == id
@@ -69,6 +78,14 @@ class _$UserCopyWithImpl<$Res, $Val extends User>
           ? _value.post
           : post // ignore: cast_nullable_to_non_nullable
               as List<Post>,
+      following: null == following
+          ? _value.following
+          : following // ignore: cast_nullable_to_non_nullable
+              as List<Following>,
+      follower: null == follower
+          ? _value.follower
+          : follower // ignore: cast_nullable_to_non_nullable
+              as List<Follower>,
     ) as $Val);
   }
 
@@ -87,7 +104,12 @@ abstract class _$$_UserCopyWith<$Res> implements $UserCopyWith<$Res> {
       __$$_UserCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({String id, UserInfo info, List<Post> post});
+  $Res call(
+      {String id,
+      UserInfo info,
+      List<Post> post,
+      List<Following> following,
+      List<Follower> follower});
 
   @override
   $UserInfoCopyWith<$Res> get info;
@@ -105,6 +127,8 @@ class __$$_UserCopyWithImpl<$Res> extends _$UserCopyWithImpl<$Res, _$_User>
     Object? id = null,
     Object? info = null,
     Object? post = null,
+    Object? following = null,
+    Object? follower = null,
   }) {
     return _then(_$_User(
       id: null == id
@@ -119,6 +143,14 @@ class __$$_UserCopyWithImpl<$Res> extends _$UserCopyWithImpl<$Res, _$_User>
           ? _value._post
           : post // ignore: cast_nullable_to_non_nullable
               as List<Post>,
+      following: null == following
+          ? _value._following
+          : following // ignore: cast_nullable_to_non_nullable
+              as List<Following>,
+      follower: null == follower
+          ? _value._follower
+          : follower // ignore: cast_nullable_to_non_nullable
+              as List<Follower>,
     ));
   }
 }
@@ -129,8 +161,12 @@ class _$_User with DiagnosticableTreeMixin implements _User {
   const _$_User(
       {required this.id,
       required this.info,
-      final List<Post> post = const <Post>[]})
-      : _post = post;
+      final List<Post> post = const <Post>[],
+      final List<Following> following = const <Following>[],
+      final List<Follower> follower = const <Follower>[]})
+      : _post = post,
+        _following = following,
+        _follower = follower;
 
   factory _$_User.fromJson(Map<String, dynamic> json) => _$$_UserFromJson(json);
 
@@ -146,9 +182,25 @@ class _$_User with DiagnosticableTreeMixin implements _User {
     return EqualUnmodifiableListView(_post);
   }
 
+  final List<Following> _following;
+  @override
+  @JsonKey()
+  List<Following> get following {
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_following);
+  }
+
+  final List<Follower> _follower;
+  @override
+  @JsonKey()
+  List<Follower> get follower {
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_follower);
+  }
+
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'User(id: $id, info: $info, post: $post)';
+    return 'User(id: $id, info: $info, post: $post, following: $following, follower: $follower)';
   }
 
   @override
@@ -158,7 +210,9 @@ class _$_User with DiagnosticableTreeMixin implements _User {
       ..add(DiagnosticsProperty('type', 'User'))
       ..add(DiagnosticsProperty('id', id))
       ..add(DiagnosticsProperty('info', info))
-      ..add(DiagnosticsProperty('post', post));
+      ..add(DiagnosticsProperty('post', post))
+      ..add(DiagnosticsProperty('following', following))
+      ..add(DiagnosticsProperty('follower', follower));
   }
 
   @override
@@ -168,13 +222,21 @@ class _$_User with DiagnosticableTreeMixin implements _User {
             other is _$_User &&
             (identical(other.id, id) || other.id == id) &&
             (identical(other.info, info) || other.info == info) &&
-            const DeepCollectionEquality().equals(other._post, _post));
+            const DeepCollectionEquality().equals(other._post, _post) &&
+            const DeepCollectionEquality()
+                .equals(other._following, _following) &&
+            const DeepCollectionEquality().equals(other._follower, _follower));
   }
 
   @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hash(
-      runtimeType, id, info, const DeepCollectionEquality().hash(_post));
+      runtimeType,
+      id,
+      info,
+      const DeepCollectionEquality().hash(_post),
+      const DeepCollectionEquality().hash(_following),
+      const DeepCollectionEquality().hash(_follower));
 
   @JsonKey(ignore: true)
   @override
@@ -194,7 +256,9 @@ abstract class _User implements User {
   const factory _User(
       {required final String id,
       required final UserInfo info,
-      final List<Post> post}) = _$_User;
+      final List<Post> post,
+      final List<Following> following,
+      final List<Follower> follower}) = _$_User;
 
   factory _User.fromJson(Map<String, dynamic> json) = _$_User.fromJson;
 
@@ -204,6 +268,10 @@ abstract class _User implements User {
   UserInfo get info;
   @override
   List<Post> get post;
+  @override
+  List<Following> get following;
+  @override
+  List<Follower> get follower;
   @override
   @JsonKey(ignore: true)
   _$$_UserCopyWith<_$_User> get copyWith => throw _privateConstructorUsedError;

@@ -1,3 +1,4 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/foundation.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
@@ -11,8 +12,15 @@ class UserInfo with _$UserInfo {
     required String id,
     required String name,
     required String bio,
-    @Default(<String>[]) List<String> tableIds,
   }) = _UserInfo;
 
   factory UserInfo.fromJson(Map<String, dynamic> json) => _$UserInfoFromJson(json);
+
+  factory UserInfo.fromDoc(DocumentSnapshot doc) {
+    return UserInfo(
+      id: doc.id,
+      name: doc['name'],
+      bio: doc['bio'],
+    );
+  }
 }

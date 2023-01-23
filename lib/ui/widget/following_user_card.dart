@@ -1,14 +1,11 @@
-import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:twitter_clone/models/user_info.dart';
-import 'package:twitter_clone/ui/search/user_profile_page.dart';
+import 'package:flutter/material.dart';
+import 'package:twitter_clone/models/following.dart';
 
+class FollowingUserCard extends ConsumerWidget {
+  const FollowingUserCard({super.key, required this.following});
 
-class UserCard extends ConsumerWidget {
-  const UserCard({super.key, required this.userInfo,required this.uid,});
-
-  final UserInfo userInfo;
-  final String uid;
+  final Following following;
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -20,9 +17,6 @@ class UserCard extends ConsumerWidget {
       ),
       child: InkWell(
         onTap: () {
-          Navigator.of(context).push(MaterialPageRoute(builder: (context) {
-            return UserProfilePage(userId: userInfo.id, uid: uid,);
-          }));
         },
         child: Padding(
           padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
@@ -33,13 +27,13 @@ class UserCard extends ConsumerWidget {
                 children: [
                   const CircleAvatar(
                     radius: 20,
-                    backgroundColor: Colors.blue,
+                    backgroundImage: const NetworkImage(''),
                   ),
                   const SizedBox(
                     width: 10,
                   ),
                   Text(
-                    userInfo.name,
+                    following.name,
                     style: const TextStyle(
                       fontSize: 20,
                       fontWeight: FontWeight.bold,
@@ -48,7 +42,6 @@ class UserCard extends ConsumerWidget {
                   const SizedBox(
                     width: 3,
                   ),
-                  Text(userInfo.id),
                 ],
               ),
               const SizedBox(
@@ -58,7 +51,7 @@ class UserCard extends ConsumerWidget {
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   Text(
-                    userInfo.bio,
+                    following.bio,
                   ),
                 ],
               ),

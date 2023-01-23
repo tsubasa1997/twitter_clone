@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:twitter_clone/ui/sign_in/log_in_page.dart';
+import 'package:twitter_clone/ui/home/home_page.dart';
 import 'package:twitter_clone/ui/sign_in/sign_up_page.dart';
 
 class WelcomePage extends StatefulWidget {
@@ -37,7 +37,7 @@ class _WelcomePageState extends State<WelcomePage> {
                   Navigator.of(context).push(
                     MaterialPageRoute(
                       builder: (context) {
-                        return LogInPage();
+                        return const HomePage();
                       },
                     ),
                   );

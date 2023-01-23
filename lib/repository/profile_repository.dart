@@ -24,6 +24,6 @@ class ProfileRepository {
       name: name,
       bio: bio,
     );
-    await _remote.UpdateProfile(userInfo, userInfo);
+    await _remote.updateProfile(userInfo, userInfo);
   }
 }

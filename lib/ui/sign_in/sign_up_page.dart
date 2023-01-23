@@ -1,18 +1,21 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:twitter_clone/ui/home/home_page.dart';
+import 'package:twitter_clone/controllers/auth_controller.dart';
 import 'package:twitter_clone/ui/sign_in/widget/text_field_input.dart';
 
-import '../home/home_page.dart';
-
-class SignUpPage extends StatefulWidget {
+class SignUpPage extends ConsumerStatefulWidget {
   const SignUpPage({Key? key}) : super(key: key);
 
   @override
-  State<SignUpPage> createState() => _SignUpPageState();
+  ConsumerState<SignUpPage> createState() => _SignUpPageState();
 }
 
-class _SignUpPageState extends State<SignUpPage> {
-  final TextEditingController _usernameController = TextEditingController();
+class _SignUpPageState extends ConsumerState<SignUpPage> {
+  final TextEditingController _emailController = TextEditingController();
   final TextEditingController _passwordController = TextEditingController();
+  final _nameController = TextEditingController();
+  final _bioController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -22,28 +25,23 @@ class _SignUpPageState extends State<SignUpPage> {
       ),
       body: SafeArea(
         child: Container(
-          padding: EdgeInsets.symmetric(horizontal: 32),
+          padding: const EdgeInsets.symmetric(horizontal: 32),
           width: double.infinity,
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
-              SizedBox(
+              const SizedBox(
                 height: 200,
               ),
-              TextFieldInput(
-                hintText: 'Enter your Name',
-                textEditingController: _usernameController,
-                textInputType: TextInputType.text,
-              ),
-              SizedBox(
+              const SizedBox(
                 height: 50,
               ),
               TextFieldInput(
                 hintText: 'Enter your e-mail',
-                textEditingController: _usernameController,
+                textEditingController: _emailController,
                 textInputType: TextInputType.text,
               ),
-              SizedBox(
+              const SizedBox(
                 height: 50,
               ),
               TextFieldInput(
@@ -51,37 +49,59 @@ class _SignUpPageState extends State<SignUpPage> {
                 textEditingController: _passwordController,
                 textInputType: TextInputType.visiblePassword,
               ),
-              SizedBox(
+              const SizedBox(
+                height: 70,
+              ),
+              TextFieldInput(
+                hintText: 'Enter your Name',
+                textEditingController: _nameController,
+                textInputType: TextInputType.text,
+              ),
+              const SizedBox(
+                height: 50,
+              ),
+              TextFieldInput(
+                hintText: 'Enter your Bio',
+                textEditingController: _bioController,
+                textInputType: TextInputType.visiblePassword,
+              ),
+              const SizedBox(
                 height: 70,
               ),
               InkWell(
                 onTap: () {
-                  Navigator.of(context).push<void>(
+                  ref.read(authProvider).createUser(
+                        email: _emailController.text,
+                        password: _passwordController.text,
+                        name: _nameController.text,
+                        bio: _bioController.text,
+                      );
+                  Navigator.of(context).push(
                     MaterialPageRoute(
                       builder: (context) {
-                        return HomePage(userId: 'U6AVmd9dunXA8wqC86EW',);
+                        return const HomePage();
                       },
                     ),
                   );
                 },
                 child: Container(
-                  child: Text(
-                    'Sign In',
-                    style: TextStyle(
-                      fontSize: 20,
-                      color: Colors.white,
-                    ),
-                  ),
                   width: 250,
                   alignment: Alignment.center,
-                  padding: EdgeInsets.symmetric(vertical: 12),
-                  decoration: ShapeDecoration(
+                  padding: const EdgeInsets.symmetric(vertical: 12),
+                  decoration: const ShapeDecoration(
                     shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.all(
                         Radius.circular(4),
                       ),
                     ),
                     color: Colors.blue,
+                  ),
+                  child: const Text(
+                    'Enter',
+                    style: TextStyle(
+                      fontSize: 20,
+                      color: Colors.white,
+                    ),
                   ),
                 ),
               ),

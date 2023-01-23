@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:twitter_clone/ui/tweet/controller/tweet_controller.dart';
+import 'package:twitter_clone/controllers/tweet_controller.dart';
 
 import '../../models/post.dart';
 import '../../models/user_info.dart';
@@ -46,7 +46,7 @@ class _PostDetailState extends ConsumerState<PostDetail> {
                     ),
                     const CircleAvatar(
                       radius: 25,
-                      backgroundImage: const NetworkImage(''),
+                      backgroundColor: Colors.blue,
                     ),
                     const SizedBox(
                       width: 10,
@@ -69,9 +69,7 @@ class _PostDetailState extends ConsumerState<PostDetail> {
                               children: [
                                 SimpleDialogOption(
                                   onPressed: () {
-                                    ref
-                                        .read(tweetStateProvider.notifier)
-                                        .deleteTweet(
+                                    ref.read(tweetProvider).deleteTweet(
                                           userId: widget.userInfo.id,
                                           postId: widget.post.id,
                                         );
@@ -95,7 +93,8 @@ class _PostDetailState extends ConsumerState<PostDetail> {
               mainAxisAlignment: MainAxisAlignment.start,
               children: [
                 Container(
-                  padding: const EdgeInsets.symmetric(horizontal: 70, vertical: 20),
+                  padding:
+                      const EdgeInsets.symmetric(horizontal: 70, vertical: 20),
                   child: Text(
                     widget.post.tweet,
                     style: const TextStyle(
