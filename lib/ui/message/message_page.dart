@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../../providers/user_tweet_providers.dart';
 import '../utils/logger.dart';
-import '../widget/user_drawer.dart';
+import '../tweet/widgets/user_drawer.dart';
 
 class MessagePage extends ConsumerStatefulWidget {
   const MessagePage({super.key, required this.uid});

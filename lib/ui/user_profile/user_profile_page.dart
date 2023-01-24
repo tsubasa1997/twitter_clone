@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:twitter_clone/providers/user_tweet_providers.dart';
 import 'package:twitter_clone/ui/home/home_page.dart';
-import 'package:twitter_clone/ui/my_page/my_following_user_page.dart';
+import 'package:twitter_clone/ui/widget/my_following_user_page.dart';
 import 'package:twitter_clone/providers/auth_user_info_provider.dart';
 import 'package:twitter_clone/providers/auth_user_providers.dart';
 import 'package:twitter_clone/providers/user_follower_providers.dart';

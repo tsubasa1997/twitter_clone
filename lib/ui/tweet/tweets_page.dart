@@ -4,7 +4,7 @@ import 'package:twitter_clone/providers/auth_user_providers.dart';
 import 'package:twitter_clone/providers/user_info_providers.dart';
 import 'package:twitter_clone/ui/widget/tweet_card.dart';
 import 'package:twitter_clone/ui/widget/tweeting_page.dart';
-import 'package:twitter_clone/ui/widget/user_drawer.dart';
+import 'package:twitter_clone/ui/tweet/widgets/user_drawer.dart';
 import '../../providers/user_tweet_providers.dart';
 
 class TweetsPage extends ConsumerStatefulWidget {

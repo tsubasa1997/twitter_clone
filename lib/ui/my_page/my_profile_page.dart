@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:twitter_clone/ui/my_page/my_following_user_page.dart';
+import 'package:twitter_clone/ui/widget/my_following_user_page.dart';
 import 'package:twitter_clone/providers/user_tweet_providers.dart';
 import 'package:twitter_clone/providers/user_following_providers.dart';
 import 'package:twitter_clone/providers/user_info_providers.dart';
-import 'package:twitter_clone/ui/my_page/edit_profile.dart';
+import 'package:twitter_clone/ui/my_page/widgets/edit_profile.dart';
 import 'package:twitter_clone/ui/widget/tweet_card.dart';
 import 'package:twitter_clone/ui/widget/tweeting_page.dart';
 import '../widget/tweet_card.dart';

@@ -1,7 +1,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:twitter_clone/ui/search/widget/user_card.dart';
+import 'package:twitter_clone/ui/search/widget/search_result_card.dart';
 
 import '../../providers/auth_user_providers.dart';
 import '../../providers/searchUsers_provider.dart';
