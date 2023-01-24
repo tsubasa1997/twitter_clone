@@ -16,15 +16,12 @@ class TweetsPage extends ConsumerStatefulWidget {
   ConsumerState<TweetsPage> createState() => _TwitPageState();
 }
 
-
 class _TwitPageState extends ConsumerState<TweetsPage> {
-
   @override
   Widget build(BuildContext context) {
     final uid = ref.watch(authUserProvider);
     final post = ref.watch(userTweetProvider(widget.uid));
     final info = ref.watch(userInfoProvider(widget.uid));
-
 
     return uid.when(
       data: (uid) {

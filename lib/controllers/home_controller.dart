@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 final homeStateProvider =
-StateNotifierProvider.autoDispose<HomeStateNotifier, int>(
-      (ref) => HomeStateNotifier(),
+    StateNotifierProvider.autoDispose<HomeStateNotifier, int>(
+  (ref) => HomeStateNotifier(),
 );
 
 class HomeStateNotifier extends StateNotifier<int> {

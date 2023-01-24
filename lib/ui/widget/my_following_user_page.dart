@@ -6,7 +6,6 @@ import 'package:twitter_clone/providers/user_info_providers.dart';
 import 'package:twitter_clone/ui/widget/follower_user_card.dart';
 import 'package:twitter_clone/ui/widget/following_user_card.dart';
 
-
 class MyFollowingUserPage extends ConsumerStatefulWidget {
   const MyFollowingUserPage({
     super.key,
@@ -28,6 +27,7 @@ class _MyFollowingUserPageState extends ConsumerState<MyFollowingUserPage> {
     final info = ref.watch(userInfoProvider(widget.userId));
     final following = ref.watch(userFollowingProvider(widget.userId));
     final follower = ref.watch(userFollowerProvider(widget.userId));
+
     return DefaultTabController(
       length: 2,
       child: Scaffold(
@@ -56,7 +56,7 @@ class _MyFollowingUserPageState extends ConsumerState<MyFollowingUserPage> {
               children: [
                 following.when(
                   data: (user) {
-                    if(user.following.isEmpty){
+                    if (user.following.isEmpty) {
                       return const Center(
                         child: Text(
                           '0 follower',
@@ -65,7 +65,7 @@ class _MyFollowingUserPageState extends ConsumerState<MyFollowingUserPage> {
                           ),
                         ),
                       );
-                    }else{
+                    } else {
                       return ListView.builder(
                         controller: _scrollController,
                         shrinkWrap: true,

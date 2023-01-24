@@ -14,7 +14,8 @@ class UserInfo with _$UserInfo {
     required String bio,
   }) = _UserInfo;
 
-  factory UserInfo.fromJson(Map<String, dynamic> json) => _$UserInfoFromJson(json);
+  factory UserInfo.fromJson(Map<String, dynamic> json) =>
+      _$UserInfoFromJson(json);
 
   factory UserInfo.fromDoc(DocumentSnapshot doc) {
     return UserInfo(

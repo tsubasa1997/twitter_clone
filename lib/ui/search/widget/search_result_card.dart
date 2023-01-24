@@ -3,9 +3,12 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:twitter_clone/models/user_info.dart';
 import 'package:twitter_clone/ui/user_profile/user_profile_page.dart';
 
-
 class UserCard extends ConsumerWidget {
-  const UserCard({super.key, required this.userInfo,required this.uid,});
+  const UserCard({
+    super.key,
+    required this.userInfo,
+    required this.uid,
+  });
 
   final UserInfo userInfo;
   final String uid;
@@ -21,7 +24,10 @@ class UserCard extends ConsumerWidget {
       child: InkWell(
         onTap: () {
           Navigator.of(context).push(MaterialPageRoute(builder: (context) {
-            return UserProfilePage(userId: userInfo.id, uid: uid,);
+            return UserProfilePage(
+              userId: userInfo.id,
+              uid: uid,
+            );
           }));
         },
         child: Padding(

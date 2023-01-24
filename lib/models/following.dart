@@ -13,5 +13,6 @@ class Following with _$Following {
     required String bio,
   }) = _Following;
 
-  factory Following.fromJson(Map<String, dynamic> json) => _$FollowingFromJson(json);
+  factory Following.fromJson(Map<String, dynamic> json) =>
+      _$FollowingFromJson(json);
 }

@@ -63,8 +63,7 @@ class _UserProfilePageState extends ConsumerState<UserProfilePage> {
                           children: [
                             ListView(
                               shrinkWrap: true,
-                              physics: const BouncingScrollPhysics(
-                                  parent: AlwaysScrollableScrollPhysics()),
+                              physics: const BouncingScrollPhysics(parent: AlwaysScrollableScrollPhysics()),
                               children: [
                                 Container(
                                   height: 150,
@@ -73,8 +72,7 @@ class _UserProfilePageState extends ConsumerState<UserProfilePage> {
                                   ),
                                   child: Row(
                                     mainAxisAlignment: MainAxisAlignment.start,
-                                    crossAxisAlignment:
-                                        CrossAxisAlignment.start,
+                                    crossAxisAlignment: CrossAxisAlignment.start,
                                     children: [
                                       const SizedBox.shrink(),
                                       IconButton(
@@ -90,31 +88,23 @@ class _UserProfilePageState extends ConsumerState<UserProfilePage> {
                                   ),
                                 ),
                                 Container(
-                                  transform: Matrix4.translationValues(
-                                      0.0, -40.0, 0.0),
-                                  padding: const EdgeInsets.symmetric(
-                                      horizontal: 20),
+                                  transform: Matrix4.translationValues(0.0, -40.0, 0.0),
+                                  padding: const EdgeInsets.symmetric(horizontal: 20),
                                   child: Column(
-                                    crossAxisAlignment:
-                                        CrossAxisAlignment.start,
+                                    crossAxisAlignment: CrossAxisAlignment.start,
                                     children: [
                                       Row(
-                                        mainAxisAlignment:
-                                            MainAxisAlignment.spaceBetween,
-                                        crossAxisAlignment:
-                                            CrossAxisAlignment.end,
+                                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                        crossAxisAlignment: CrossAxisAlignment.end,
                                         children: [
                                           const CircleAvatar(
                                             radius: 45,
                                             backgroundImage: NetworkImage(''),
                                           ),
-                                          ref
-                                              .watch(authLoginUserProvider(uid))
-                                              .when(
+                                          ref.watch(authLoginUserProvider(uid)).when(
                                                 data: (loginUser) {
                                                   if (loginUser != null) {
-                                                    final isFollowing =
-                                                        ref.watch(
+                                                    final isFollowing = ref.watch(
                                                       followProvider(
                                                         MyFollowingState(
                                                           userId: widget.userId,
@@ -125,91 +115,72 @@ class _UserProfilePageState extends ConsumerState<UserProfilePage> {
                                                     return isFollowing.when(
                                                       data: (isFollowing) {
                                                         return Container(
-                                                            width: 120,
-                                                            height: 45,
-                                                            decoration:
-                                                                BoxDecoration(
-                                                              border: Border.all(
-                                                                  color: Colors
-                                                                      .blue),
-                                                              borderRadius:
-                                                                  BorderRadius
-                                                                      .circular(
-                                                                          40),
-                                                              color: isFollowing
-                                                                  ? Colors.blue
-                                                                  : Colors
-                                                                      .white,
-                                                            ),
-                                                            child: isFollowing
-                                                                ? TextButton(
-                                                                    onPressed:
-                                                                        () {
-                                                                      ref.watch(isFollowProvider).deleteFollowing(
+                                                          width: 120,
+                                                          height: 45,
+                                                          decoration: BoxDecoration(
+                                                            border: Border.all(color: Colors.blue),
+                                                            borderRadius: BorderRadius.circular(40),
+                                                            color: isFollowing ? Colors.blue : Colors.white,
+                                                          ),
+                                                          child: isFollowing
+                                                              ? TextButton(
+                                                                  onPressed: () {
+                                                                    ref.watch(isFollowProvider).deleteFollowing(
                                                                           myUid: loginUser.id,
                                                                           userId: user.id,
-                                                                      );
+                                                                        );
 
-                                                                      ref.watch(isFollowProvider).deleteFollower(
+                                                                    ref.watch(isFollowProvider).deleteFollower(
                                                                           myUid: loginUser.id,
                                                                           userId: user.id,
-                                                                      );
-                                                                    },
-                                                                    child:
-                                                                        const Text(
-                                                                      'フォローなう',
-                                                                      style:
-                                                                          TextStyle(
-                                                                        fontSize:
-                                                                            15,
-                                                                        color: Colors
-                                                                            .white,
-                                                                      ),
+                                                                        );
+                                                                  },
+                                                                  child: const Text(
+                                                                    'フォローなう',
+                                                                    style: TextStyle(
+                                                                      fontSize: 15,
+                                                                      color: Colors.white,
                                                                     ),
-                                                                  )
-                                                                : TextButton(
-                                                                    onPressed:
-                                                                        () {
-                                                                      ref.watch(isFollowProvider).createFollowing(
-                                                                            myUid: uid,
-                                                                            userId: user.id,
-                                                                            bio: user.info.bio,
-                                                                            name: user.info.name,
-                                                                          );
-
-                                                                      ref.watch(isFollowProvider).addFollower(
+                                                                  ),
+                                                                )
+                                                              : TextButton(
+                                                                  onPressed: () {
+                                                                    ref.watch(isFollowProvider).createFollowing(
+                                                                          myUid: uid,
                                                                           userId: user.id,
                                                                           bio: user.info.bio,
                                                                           name: user.info.name,
-                                                                          uid: uid);
-                                                                    },
-                                                                    child: const Text(
-                                                                      'フォロー',
-                                                                      style: TextStyle(
-                                                                        fontSize: 20,
-                                                                        color: Colors.blue,
-                                                                      ),
+                                                                        );
+
+                                                                    ref.watch(isFollowProvider).addFollower(
+                                                                          userId: user.id,
+                                                                          bio: user.info.bio,
+                                                                          name: user.info.name,
+                                                                          uid: uid,
+                                                                        );
+                                                                  },
+                                                                  child: const Text(
+                                                                    'フォロー',
+                                                                    style: TextStyle(
+                                                                      fontSize: 20,
+                                                                      color: Colors.blue,
                                                                     ),
                                                                   ),
+                                                                ),
                                                         );
                                                       },
-                                                      error: (e, _) =>
-                                                          const Text(
+                                                      error: (e, _) => const Text(
                                                         'e',
-                                                        style: TextStyle(
-                                                            color: Colors.blue),
+                                                        style: TextStyle(color: Colors.blue),
                                                       ),
-                                                      loading: () =>
-                                                          const CircularProgressIndicator(),
+                                                      loading: () => const CircularProgressIndicator(),
                                                     );
                                                   } else {
                                                     return const Text('unk');
                                                   }
                                                 },
-                                                error: (e, _) =>
-                                                    const Text('e'),
-                                                loading: () =>
-                                                    const CircularProgressIndicator(),
+                                                error: (e, _) => const Text('e'),
+                                                loading: () => const CircularProgressIndicator(),
                                               ),
                                         ],
                                       ),
@@ -238,8 +209,7 @@ class _UserProfilePageState extends ConsumerState<UserProfilePage> {
                                                   Navigator.of(context).push(
                                                     MaterialPageRoute(
                                                       builder: (context) {
-                                                        return MyFollowingUserPage(
-                                                            userId: user.id);
+                                                        return MyFollowingUserPage(userId: user.id);
                                                       },
                                                     ),
                                                   );
@@ -255,8 +225,7 @@ class _UserProfilePageState extends ConsumerState<UserProfilePage> {
                                               );
                                             },
                                             error: (e, _) => const Text('e'),
-                                            loading: () =>
-                                                const CircularProgressIndicator(),
+                                            loading: () => const CircularProgressIndicator(),
                                           ),
                                           const SizedBox(width: 20),
                                           userFollower.when(
@@ -266,8 +235,7 @@ class _UserProfilePageState extends ConsumerState<UserProfilePage> {
                                                   Navigator.of(context).push(
                                                     MaterialPageRoute(
                                                       builder: (context) {
-                                                        return MyFollowingUserPage(
-                                                            userId: user.id);
+                                                        return MyFollowingUserPage(userId: user.id);
                                                       },
                                                     ),
                                                   );
@@ -283,8 +251,7 @@ class _UserProfilePageState extends ConsumerState<UserProfilePage> {
                                               );
                                             },
                                             error: (e, _) => const Text('e'),
-                                            loading: () =>
-                                                const CircularProgressIndicator(),
+                                            loading: () => const CircularProgressIndicator(),
                                           ),
                                         ],
                                       ),

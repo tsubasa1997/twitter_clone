@@ -63,7 +63,8 @@ class DefaultFirebaseOptions {
     messagingSenderId: '392834345123',
     projectId: 'twitter-clone-196c0',
     storageBucket: 'twitter-clone-196c0.appspot.com',
-    iosClientId: '392834345123-af539l5md1i14nlaspnqmfen7rkqln1s.apps.googleusercontent.com',
+    iosClientId:
+        '392834345123-af539l5md1i14nlaspnqmfen7rkqln1s.apps.googleusercontent.com',
     iosBundleId: 'com.example.twitterClone',
   );
 }

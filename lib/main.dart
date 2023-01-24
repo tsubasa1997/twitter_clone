@@ -5,8 +5,6 @@ import 'package:twitter_clone/app.dart';
 
 import 'firebase_options.dart';
 
-
-
 Future<void> setupFirebase() async {
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
