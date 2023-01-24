@@ -146,16 +146,14 @@ class _UserProfilePageState extends ConsumerState<UserProfilePage> {
                                                                     onPressed:
                                                                         () {
                                                                       ref.watch(isFollowProvider).deleteFollowing(
-                                                                          myUid: loginUser
-                                                                              .id,
-                                                                          userId:
-                                                                              user.id);
+                                                                          myUid: loginUser.id,
+                                                                          userId: user.id,
+                                                                      );
 
                                                                       ref.watch(isFollowProvider).deleteFollower(
-                                                                          myUid: loginUser
-                                                                              .id,
-                                                                          userId:
-                                                                              user.id);
+                                                                          myUid: loginUser.id,
+                                                                          userId: user.id,
+                                                                      );
                                                                     },
                                                                     child:
                                                                         const Text(
@@ -172,44 +170,28 @@ class _UserProfilePageState extends ConsumerState<UserProfilePage> {
                                                                 : TextButton(
                                                                     onPressed:
                                                                         () {
-                                                                      ref
-                                                                          .watch(
-                                                                              isFollowProvider)
-                                                                          .createFollowing(
-                                                                            myUid:
-                                                                                uid,
-                                                                            userId:
-                                                                                user.id,
-                                                                            bio:
-                                                                                user.info.bio,
-                                                                            name:
-                                                                                user.info.name,
+                                                                      ref.watch(isFollowProvider).createFollowing(
+                                                                            myUid: uid,
+                                                                            userId: user.id,
+                                                                            bio: user.info.bio,
+                                                                            name: user.info.name,
                                                                           );
 
                                                                       ref.watch(isFollowProvider).addFollower(
-                                                                          userId: user
-                                                                              .id,
-                                                                          bio: user
-                                                                              .info
-                                                                              .bio,
-                                                                          name: user
-                                                                              .info
-                                                                              .name,
-                                                                          uid:
-                                                                              uid);
+                                                                          userId: user.id,
+                                                                          bio: user.info.bio,
+                                                                          name: user.info.name,
+                                                                          uid: uid);
                                                                     },
-                                                                    child:
-                                                                        const Text(
+                                                                    child: const Text(
                                                                       'フォロー',
-                                                                      style:
-                                                                          TextStyle(
-                                                                        fontSize:
-                                                                            20,
-                                                                        color: Colors
-                                                                            .blue,
+                                                                      style: TextStyle(
+                                                                        fontSize: 20,
+                                                                        color: Colors.blue,
                                                                       ),
                                                                     ),
-                                                                  ));
+                                                                  ),
+                                                        );
                                                       },
                                                       error: (e, _) =>
                                                           const Text(
