@@ -26,7 +26,7 @@ class FollowingUserCard extends ConsumerWidget {
                 children: [
                   const CircleAvatar(
                     radius: 20,
-                    backgroundImage: const NetworkImage(''),
+                    backgroundImage: NetworkImage(''),
                   ),
                   const SizedBox(
                     width: 10,

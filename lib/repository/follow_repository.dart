@@ -1,13 +1,9 @@
-import 'package:cloud_firestore/cloud_firestore.dart';
+
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:twitter_clone/models/follower.dart';
 import 'package:twitter_clone/models/user_info.dart';
-
-import '../common/exceptions/not_find_store_exception.dart';
-import '../datasource/auth_datasource.dart';
 import '../datasource/firebase_datasource.dart';
 import '../models/following.dart';
-import '../models/user.dart';
 
 final usersRepositoryProvider = Provider(
   (ref) => UsersRepository(ref: ref),

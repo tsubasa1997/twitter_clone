@@ -28,7 +28,7 @@ class App extends StatelessWidget {
         //     .textTheme
         //     .apply(bodyColor: Colors.white, displayColor: Colors.white),
       ),
-      home: WelcomePage(),
+      home: const WelcomePage(),
     );
   }
 }

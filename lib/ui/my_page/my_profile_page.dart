@@ -229,7 +229,7 @@ class _MyProfilePageState extends ConsumerState<MyProfilePage> {
                   return Scrollbar(
                     child: ListView.builder(
                       controller: _scrollController,
-                      physics: AlwaysScrollableScrollPhysics(),
+                      physics: const AlwaysScrollableScrollPhysics(),
                       shrinkWrap: true,
                       primary: false,
                       itemCount: user.post.length,
