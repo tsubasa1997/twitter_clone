@@ -1,17 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-
-import '../home/provider/home_providers.dart';
+import '../../providers/user_tweet_providers.dart';
 import '../utils/logger.dart';
 import '../widget/user_drawer.dart';
 
 class NotificationsPage extends ConsumerStatefulWidget {
   const NotificationsPage({
     super.key,
-    required this.userId,
+    required this.uid,
   });
 
-  final String userId;
+  final String uid;
 
   @override
   ConsumerState<NotificationsPage> createState() => _NotificationsPageState();
@@ -22,9 +21,8 @@ final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
 class _NotificationsPageState extends ConsumerState<NotificationsPage> {
   @override
   Widget build(BuildContext context) {
-    return ref.watch(homeProvider(widget.userId)).when(
+    return ref.watch(userTweetProvider(widget.uid)).when(
           data: (user) {
-            final posts = user.post;
             return Scaffold(
               key: _scaffoldKey,
               appBar: AppBar(
@@ -41,8 +39,7 @@ class _NotificationsPageState extends ConsumerState<NotificationsPage> {
                     _scaffoldKey.currentState!.openDrawer();
                   },
                   icon: const CircleAvatar(
-                    backgroundImage: const NetworkImage(
-                        'https://i.pinimg.com/564x/9b/47/a0/9b47a023caf29f113237d61170f34ad9.jpg'),
+                    backgroundColor: Colors.blue,
                     radius: 16,
                   ),
                 ),

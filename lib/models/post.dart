@@ -18,5 +18,12 @@ class Post with _$Post {
 
 
   factory Post.fromJson(Map<String, dynamic> json) => _$PostFromJson(json);
+
+  factory Post.fromDoc(DocumentSnapshot doc) {
+    return Post(
+        id: doc.id,
+      tweet: doc['tweet'],
+    );
+  }
 }
 

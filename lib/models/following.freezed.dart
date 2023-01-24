@@ -3,7 +3,7 @@
 // ignore_for_file: type=lint
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target
 
-part of 'user_info.dart';
+part of 'following.dart';
 
 // **************************************************************************
 // FreezedGenerator
@@ -14,34 +14,34 @@ T _$identity<T>(T value) => value;
 final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
-UserInfo _$UserInfoFromJson(Map<String, dynamic> json) {
-  return _UserInfo.fromJson(json);
+Following _$FollowingFromJson(Map<String, dynamic> json) {
+  return _Following.fromJson(json);
 }
 
 /// @nodoc
-mixin _$UserInfo {
+mixin _$Following {
   String get id => throw _privateConstructorUsedError;
   String get name => throw _privateConstructorUsedError;
   String get bio => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
-  $UserInfoCopyWith<UserInfo> get copyWith =>
+  $FollowingCopyWith<Following> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class $UserInfoCopyWith<$Res> {
-  factory $UserInfoCopyWith(UserInfo value, $Res Function(UserInfo) then) =
-      _$UserInfoCopyWithImpl<$Res, UserInfo>;
+abstract class $FollowingCopyWith<$Res> {
+  factory $FollowingCopyWith(Following value, $Res Function(Following) then) =
+      _$FollowingCopyWithImpl<$Res, Following>;
   @useResult
   $Res call({String id, String name, String bio});
 }
 
 /// @nodoc
-class _$UserInfoCopyWithImpl<$Res, $Val extends UserInfo>
-    implements $UserInfoCopyWith<$Res> {
-  _$UserInfoCopyWithImpl(this._value, this._then);
+class _$FollowingCopyWithImpl<$Res, $Val extends Following>
+    implements $FollowingCopyWith<$Res> {
+  _$FollowingCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
   final $Val _value;
@@ -73,21 +73,21 @@ class _$UserInfoCopyWithImpl<$Res, $Val extends UserInfo>
 }
 
 /// @nodoc
-abstract class _$$_UserInfoCopyWith<$Res> implements $UserInfoCopyWith<$Res> {
-  factory _$$_UserInfoCopyWith(
-          _$_UserInfo value, $Res Function(_$_UserInfo) then) =
-      __$$_UserInfoCopyWithImpl<$Res>;
+abstract class _$$_FollowingCopyWith<$Res> implements $FollowingCopyWith<$Res> {
+  factory _$$_FollowingCopyWith(
+          _$_Following value, $Res Function(_$_Following) then) =
+      __$$_FollowingCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call({String id, String name, String bio});
 }
 
 /// @nodoc
-class __$$_UserInfoCopyWithImpl<$Res>
-    extends _$UserInfoCopyWithImpl<$Res, _$_UserInfo>
-    implements _$$_UserInfoCopyWith<$Res> {
-  __$$_UserInfoCopyWithImpl(
-      _$_UserInfo _value, $Res Function(_$_UserInfo) _then)
+class __$$_FollowingCopyWithImpl<$Res>
+    extends _$FollowingCopyWithImpl<$Res, _$_Following>
+    implements _$$_FollowingCopyWith<$Res> {
+  __$$_FollowingCopyWithImpl(
+      _$_Following _value, $Res Function(_$_Following) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -97,7 +97,7 @@ class __$$_UserInfoCopyWithImpl<$Res>
     Object? name = null,
     Object? bio = null,
   }) {
-    return _then(_$_UserInfo(
+    return _then(_$_Following(
       id: null == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
@@ -116,11 +116,11 @@ class __$$_UserInfoCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$_UserInfo with DiagnosticableTreeMixin implements _UserInfo {
-  const _$_UserInfo({required this.id, required this.name, required this.bio});
+class _$_Following with DiagnosticableTreeMixin implements _Following {
+  const _$_Following({required this.id, required this.name, required this.bio});
 
-  factory _$_UserInfo.fromJson(Map<String, dynamic> json) =>
-      _$$_UserInfoFromJson(json);
+  factory _$_Following.fromJson(Map<String, dynamic> json) =>
+      _$$_FollowingFromJson(json);
 
   @override
   final String id;
@@ -131,14 +131,14 @@ class _$_UserInfo with DiagnosticableTreeMixin implements _UserInfo {
 
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'UserInfo(id: $id, name: $name, bio: $bio)';
+    return 'Following(id: $id, name: $name, bio: $bio)';
   }
 
   @override
   void debugFillProperties(DiagnosticPropertiesBuilder properties) {
     super.debugFillProperties(properties);
     properties
-      ..add(DiagnosticsProperty('type', 'UserInfo'))
+      ..add(DiagnosticsProperty('type', 'Following'))
       ..add(DiagnosticsProperty('id', id))
       ..add(DiagnosticsProperty('name', name))
       ..add(DiagnosticsProperty('bio', bio));
@@ -148,7 +148,7 @@ class _$_UserInfo with DiagnosticableTreeMixin implements _UserInfo {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_UserInfo &&
+            other is _$_Following &&
             (identical(other.id, id) || other.id == id) &&
             (identical(other.name, name) || other.name == name) &&
             (identical(other.bio, bio) || other.bio == bio));
@@ -161,24 +161,25 @@ class _$_UserInfo with DiagnosticableTreeMixin implements _UserInfo {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_UserInfoCopyWith<_$_UserInfo> get copyWith =>
-      __$$_UserInfoCopyWithImpl<_$_UserInfo>(this, _$identity);
+  _$$_FollowingCopyWith<_$_Following> get copyWith =>
+      __$$_FollowingCopyWithImpl<_$_Following>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_UserInfoToJson(
+    return _$$_FollowingToJson(
       this,
     );
   }
 }
 
-abstract class _UserInfo implements UserInfo {
-  const factory _UserInfo(
+abstract class _Following implements Following {
+  const factory _Following(
       {required final String id,
       required final String name,
-      required final String bio}) = _$_UserInfo;
+      required final String bio}) = _$_Following;
 
-  factory _UserInfo.fromJson(Map<String, dynamic> json) = _$_UserInfo.fromJson;
+  factory _Following.fromJson(Map<String, dynamic> json) =
+      _$_Following.fromJson;
 
   @override
   String get id;
@@ -188,6 +189,6 @@ abstract class _UserInfo implements UserInfo {
   String get bio;
   @override
   @JsonKey(ignore: true)
-  _$$_UserInfoCopyWith<_$_UserInfo> get copyWith =>
+  _$$_FollowingCopyWith<_$_Following> get copyWith =>
       throw _privateConstructorUsedError;
 }

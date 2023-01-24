@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:twitter_clone/ui/home/controller/profile_controller.dart';
-import 'package:twitter_clone/ui/home/my_profile_page.dart';
+import 'package:twitter_clone/controllers/profile_controller.dart';
+
 
 class EditProfile extends ConsumerStatefulWidget {
   const EditProfile({
@@ -22,14 +22,14 @@ class EditProfile extends ConsumerStatefulWidget {
 }
 
 class _EditProfileState extends ConsumerState<EditProfile> {
-  final _NameController = TextEditingController();
-  final _BioController = TextEditingController();
+  final _nameController = TextEditingController();
+  final _bioController = TextEditingController();
 
   @override
   void dispose() {
     super.dispose();
-    _NameController.dispose();
-    _BioController.dispose();
+    _nameController.dispose();
+    _bioController.dispose();
   }
 
   @override
@@ -57,10 +57,10 @@ class _EditProfileState extends ConsumerState<EditProfile> {
         actions: [
           TextButton(
             onPressed: () {
-              ref.read(profileStateProvider.notifier).updateProfile(
+              ref.read(profileProvider).updateProfile(
                     id: widget.userInfoId,
-                    name: _NameController.text,
-                    bio: _BioController.text,
+                    name: _nameController.text,
+                    bio: _bioController.text,
                   );
               Navigator.of(context).pop();
             },
@@ -85,8 +85,8 @@ class _EditProfileState extends ConsumerState<EditProfile> {
             padding: const EdgeInsets.symmetric(horizontal: 20),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                const CircleAvatar(
+              children: const [
+                CircleAvatar(
                   radius: 35,
                   backgroundImage: NetworkImage(''),
                 ),
@@ -105,10 +105,10 @@ class _EditProfileState extends ConsumerState<EditProfile> {
                   const Text(
                     '名前',
                   ),
-                  Container(
+                  SizedBox(
                     width: 220,
                     child: TextField(
-                      controller: _NameController,
+                      controller: _nameController,
                       decoration: InputDecoration(
                         enabledBorder: InputBorder.none,
                         focusedBorder: InputBorder.none,
@@ -133,10 +133,10 @@ class _EditProfileState extends ConsumerState<EditProfile> {
                   const Text(
                     '自己紹介',
                   ),
-                  Container(
+                  SizedBox(
                     width: 220,
                     child: TextField(
-                      controller: _BioController,
+                      controller: _bioController,
                       decoration: InputDecoration(
                         enabledBorder: InputBorder.none,
                         focusedBorder: InputBorder.none,

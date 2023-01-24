@@ -1,18 +1,18 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'user_info.dart';
+part of 'following.dart';
 
 // **************************************************************************
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$_UserInfo _$$_UserInfoFromJson(Map<String, dynamic> json) => _$_UserInfo(
+_$_Following _$$_FollowingFromJson(Map<String, dynamic> json) => _$_Following(
       id: json['id'] as String,
       name: json['name'] as String,
       bio: json['bio'] as String,
     );
 
-Map<String, dynamic> _$$_UserInfoToJson(_$_UserInfo instance) =>
+Map<String, dynamic> _$$_FollowingToJson(_$_Following instance) =>
     <String, dynamic>{
       'id': instance.id,
       'name': instance.name,
