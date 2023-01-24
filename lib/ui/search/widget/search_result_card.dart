@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:twitter_clone/models/user_info.dart';
-import 'package:twitter_clone/ui/search/user_profile_page.dart';
+import 'package:twitter_clone/ui/user_profile/user_profile_page.dart';
 
 
 class UserCard extends ConsumerWidget {
