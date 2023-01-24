@@ -35,5 +35,4 @@ class TweetRepository {
   }) async {
     await _remote.deletePost(userId, postId);
   }
-
 }

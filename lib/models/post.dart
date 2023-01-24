@@ -16,14 +16,12 @@ class Post with _$Post {
     @Default('') String tweet,
   }) = _Post;
 
-
   factory Post.fromJson(Map<String, dynamic> json) => _$PostFromJson(json);
 
   factory Post.fromDoc(DocumentSnapshot doc) {
     return Post(
-        id: doc.id,
+      id: doc.id,
       tweet: doc['tweet'],
     );
   }
 }
-

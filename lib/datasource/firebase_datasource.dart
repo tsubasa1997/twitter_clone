@@ -8,7 +8,7 @@ import '../models/post.dart';
 import '../models/user_info.dart';
 
 final firestoreDatasourceProvider = Provider(
-      (_) => FirestoreDatasource(),
+  (_) => FirestoreDatasource(),
 );
 
 class FirestoreDatasource {
@@ -19,19 +19,14 @@ class FirestoreDatasource {
   static const followingCollectionId = 'following';
   static const followerCollectionId = 'follower';
 
-  String createUserId() =>
-      _db
-          .collection(usersCollectionId)
-          .doc()
-          .id;
+  String createUserId() => _db.collection(usersCollectionId).doc().id;
 
-  String createPostId(String userId) =>
-      _db
-          .collection(usersCollectionId)
-          .doc(userId)
-          .collection(postsCollectionId)
-          .doc()
-          .id;
+  String createPostId(String userId) => _db
+      .collection(usersCollectionId)
+      .doc(userId)
+      .collection(postsCollectionId)
+      .doc()
+      .id;
 
   Future<void> createPost(String userId, Post post) async {
     final ref = _db
@@ -68,7 +63,7 @@ class FirestoreDatasource {
 
   Future<List<UserInfo>> searchUsers(String userName) async {
     final ref =
-    _db.collection(usersCollectionId).where('name', isEqualTo: userName);
+        _db.collection(usersCollectionId).where('name', isEqualTo: userName);
     final snapShot = await ref.get();
     final users = snapShot.docs.map((e) {
       final json = e.data();
@@ -76,7 +71,6 @@ class FirestoreDatasource {
     });
     return users.toList();
   }
-
 
   Stream<UserInfo> listenUserInfo(String userId) async* {
     final ref = _db.collection(usersCollectionId).doc(userId);
@@ -90,7 +84,6 @@ class FirestoreDatasource {
     });
   }
 
-
   Stream<bool> isFollow(String uid, String userId) async* {
     final ref = _db
         .collection(usersCollectionId)
@@ -99,7 +92,7 @@ class FirestoreDatasource {
         .doc(userId);
     yield* ref.snapshots().map((event) {
       final json = event.data();
-      if(json == null) {
+      if (json == null) {
         return false;
       }
       return true;
@@ -146,7 +139,6 @@ class FirestoreDatasource {
     });
   }
 
-
   Future<void> createFollowing(String myUid, Following following) async {
     final ref = _db
         .collection(usersCollectionId)
@@ -182,6 +174,4 @@ class FirestoreDatasource {
         .doc(myUid);
     await ref.delete();
   }
-
-
 }

@@ -3,7 +3,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../repository/profile_repository.dart';
 
 final profileProvider = Provider(
-      (ref) => ProfileController(ref: ref),
+  (ref) => ProfileController(ref: ref),
 );
 
 class ProfileController {

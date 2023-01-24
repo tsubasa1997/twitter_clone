@@ -1,4 +1,3 @@
-
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:twitter_clone/ui/search/widget/search_result_card.dart';
@@ -29,7 +28,7 @@ class _SearchPageState extends ConsumerState<SearchPage> {
 
     return uid.when(
       data: (uid) {
-        if(uid != null){
+        if (uid != null) {
           return Scaffold(
             key: _scaffoldKey,
             appBar: AppBar(
@@ -66,11 +65,12 @@ class _SearchPageState extends ConsumerState<SearchPage> {
               data: (users) {
                 return ListView.builder(
                     itemCount: users.length,
-                    itemBuilder: (context, index) =>
-                        UserCard(userInfo: users[index], uid: widget.uid,)
-                );
+                    itemBuilder: (context, index) => UserCard(
+                          userInfo: users[index],
+                          uid: widget.uid,
+                        ));
               },
-              error: (e,_) {
+              error: (e, _) {
                 logger.warning(e);
                 return const Center(
                   child: Text('error'),
@@ -83,7 +83,7 @@ class _SearchPageState extends ConsumerState<SearchPage> {
               },
             ),
           );
-        }else{
+        } else {
           return const Text('error');
         }
       },
@@ -93,8 +93,7 @@ class _SearchPageState extends ConsumerState<SearchPage> {
           child: Text('error'),
         );
       },
-      loading: () =>
-      const Center(
+      loading: () => const Center(
         child: CircularProgressIndicator(),
       ),
     );

@@ -16,7 +16,6 @@ class HomePage extends ConsumerStatefulWidget {
     super.key,
   });
 
-
   @override
   ConsumerState<HomePage> createState() => _HomePageState();
 }
@@ -24,7 +23,6 @@ class HomePage extends ConsumerStatefulWidget {
 class _HomePageState extends ConsumerState<HomePage> {
   final TextEditingController _emailController = TextEditingController();
   final TextEditingController _passwordController = TextEditingController();
-
 
   @override
   Widget build(BuildContext context) {

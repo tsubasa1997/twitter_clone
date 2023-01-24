@@ -4,5 +4,5 @@ import '../models/user.dart';
 import '../repository/user_repository.dart';
 
 final userFollowerProvider = StreamProvider.autoDispose.family<User, String>(
-      (ref, userId) => ref.watch(homeRepositoryProvider).listenUserFollower(userId),
+  (ref, userId) => ref.watch(homeRepositoryProvider).listenUserFollower(userId),
 );

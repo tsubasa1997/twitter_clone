@@ -7,11 +7,9 @@ class TweetingPage extends ConsumerStatefulWidget {
 
   final String userId;
 
-
   @override
   ConsumerState<TweetingPage> createState() => _TweetingPageState();
 }
-
 
 class _TweetingPageState extends ConsumerState<TweetingPage> {
   final _tweetController = TextEditingController();

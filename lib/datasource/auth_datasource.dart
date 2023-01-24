@@ -4,7 +4,6 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-
 final authDatasourceProvider = Provider((_) => AuthDatasource());
 
 class AuthDatasource {
@@ -27,7 +26,7 @@ class AuthDatasource {
     final user = userCredential.user;
     if (user != null) {
       FirebaseFirestore.instance.collection('users').doc(user.uid).set({
-        'id':user.uid,
+        'id': user.uid,
         'name': name,
         'bio': bio,
       });
@@ -35,8 +34,8 @@ class AuthDatasource {
   }
 
   Stream<String?> getUid() async* {
-     yield* _auth.authStateChanges().map((User? user) {
-      if(user == null){
+    yield* _auth.authStateChanges().map((User? user) {
+      if (user == null) {
         return null;
       } else {
         final userCredential = _auth.currentUser;
@@ -45,7 +44,6 @@ class AuthDatasource {
       }
     });
   }
-
 
   Future<void> signIn(String email, String password) async {
     await _auth.signInWithEmailAndPassword(

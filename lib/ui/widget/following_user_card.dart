@@ -16,8 +16,7 @@ class FollowingUserCard extends ConsumerWidget {
         border: Border.all(color: Colors.blue),
       ),
       child: InkWell(
-        onTap: () {
-        },
+        onTap: () {},
         child: Padding(
           padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
           child: Column(

@@ -20,7 +20,6 @@ class UsersRepository {
 
   FirestoreDatasource get _remote => ref.read(firestoreDatasourceProvider);
 
-
   Future<List<UserInfo>> searchUsers({
     required String userName,
   }) async {
@@ -42,12 +41,11 @@ class UsersRepository {
     await _remote.createFollowing(myUid, following);
   }
 
-  Future<void> addFollower({
-    required String userId,
-    required String bio,
-    required String name,
-    required String uid
-  }) async {
+  Future<void> addFollower(
+      {required String userId,
+      required String bio,
+      required String name,
+      required String uid}) async {
     final follower = Follower(id: uid, name: name, bio: bio);
     await _remote.addFollower(userId, follower);
   }
@@ -56,22 +54,19 @@ class UsersRepository {
     required String myUid,
     required String userId,
   }) async {
-    await _remote.deleteFollowing(myUid,userId);
+    await _remote.deleteFollowing(myUid, userId);
   }
 
   Future<void> deleteFollower({
     required String myUid,
     required String userId,
   }) async {
-    await _remote.deleteFollower(myUid,userId);
+    await _remote.deleteFollower(myUid, userId);
   }
 
-
-  Stream<bool> isFollowUser({required String userId, required String uid}) async* {
+  Stream<bool> isFollowUser(
+      {required String userId, required String uid}) async* {
     final follow = _remote.isFollow(uid, userId);
     yield* follow;
   }
-
-
-
 }
