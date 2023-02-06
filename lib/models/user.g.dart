@@ -21,6 +21,10 @@ _$_User _$$_UserFromJson(Map<String, dynamic> json) => _$_User(
               ?.map((e) => Follower.fromJson(e as Map<String, dynamic>))
               .toList() ??
           const <Follower>[],
+      chatroom: (json['chatroom'] as List<dynamic>?)
+              ?.map((e) => Chatroom.fromJson(e as Map<String, dynamic>))
+              .toList() ??
+          const <Chatroom>[],
     );
 
 Map<String, dynamic> _$$_UserToJson(_$_User instance) => <String, dynamic>{
@@ -29,4 +33,5 @@ Map<String, dynamic> _$$_UserToJson(_$_User instance) => <String, dynamic>{
       'post': instance.post,
       'following': instance.following,
       'follower': instance.follower,
+      'chatroom': instance.chatroom,
     };

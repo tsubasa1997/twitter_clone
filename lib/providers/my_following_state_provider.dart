@@ -4,7 +4,7 @@ import 'package:freezed_annotation/freezed_annotation.dart';
 
 import '../repository/follow_repository.dart';
 
-part '../repository/my_following_state_provider.freezed.dart';
+part 'my_following_state_provider.freezed.dart';
 
 @freezed
 class MyFollowingState with _$MyFollowingState {

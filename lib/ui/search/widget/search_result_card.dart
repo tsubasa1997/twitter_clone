@@ -54,7 +54,6 @@ class UserCard extends ConsumerWidget {
                   const SizedBox(
                     width: 3,
                   ),
-                  Text(userInfo.id),
                 ],
               ),
               const SizedBox(

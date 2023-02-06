@@ -4,6 +4,7 @@ import 'package:twitter_clone/models/following.dart';
 import 'package:twitter_clone/models/post.dart';
 import 'package:twitter_clone/models/user_info.dart';
 
+import 'chat_room.dart';
 import 'follower.dart';
 
 part 'user.freezed.dart';
@@ -18,6 +19,7 @@ class User with _$User {
     @Default(<Post>[]) List<Post> post,
     @Default(<Following>[]) List<Following> following,
     @Default(<Follower>[]) List<Follower> follower,
+    @Default(<Chatroom>[]) List<Chatroom> chatroom,
   }) = _User;
 
   factory User.fromJson(Map<String, dynamic> json) => _$UserFromJson(json);

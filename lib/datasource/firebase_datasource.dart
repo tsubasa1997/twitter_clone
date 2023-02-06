@@ -1,8 +1,10 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:twitter_clone/models/following.dart';
+import 'package:twitter_clone/models/message.dart';
 
 import '../common/exceptions/not_find_store_exception.dart';
+import '../models/chat_room.dart';
 import '../models/follower.dart';
 import '../models/post.dart';
 import '../models/user_info.dart';
@@ -18,6 +20,8 @@ class FirestoreDatasource {
   static const postsCollectionId = 'posts';
   static const followingCollectionId = 'following';
   static const followerCollectionId = 'follower';
+  static const chatroomCollectionId = 'chatroom';
+  static const messageCollectionId = 'message';
 
   String createUserId() => _db.collection(usersCollectionId).doc().id;
 
@@ -27,6 +31,60 @@ class FirestoreDatasource {
       .collection(postsCollectionId)
       .doc()
       .id;
+
+  String createChatroomId(String uid) => _db
+      .collection(usersCollectionId)
+      .doc(uid)
+      .collection(chatroomCollectionId)
+      .doc()
+      .id;
+
+  String createMessageId(String chatRoomId) => _db
+      .collection(chatroomCollectionId)
+      .doc(chatRoomId)
+      .collection(messageCollectionId)
+      .doc()
+      .id;
+
+  Future<void> createChatRoom(String uid,Chatroom chatroom) async {
+    final ref = _db
+        .collection(usersCollectionId)
+        .doc(uid)
+        .collection(chatroomCollectionId)
+        .doc(chatroom.roomId);
+    await ref.set(chatroom.toJson());
+  }
+
+  Future<void> createReceiverChatRoom(String receiverId,Chatroom chatroom) async {
+    final ref = _db
+        .collection(usersCollectionId)
+        .doc(receiverId)
+        .collection(chatroomCollectionId)
+        .doc(chatroom.roomId);
+    await ref.set(chatroom.toJson());
+  }
+
+  Future<void> addMessage(String uid,String chatroomId,Message message) async {
+    final ref = _db
+        .collection(usersCollectionId)
+        .doc(uid)
+        .collection(chatroomCollectionId)
+        .doc(chatroomId)
+        .collection(messageCollectionId)
+        .doc(message.id);
+    await ref.set(message.toJson());
+  }
+
+  Future<void> receiveMessage(String receiverId, String chatroomId, Message message) async {
+    final ref = _db
+        .collection(usersCollectionId)
+        .doc(receiverId)
+        .collection(chatroomCollectionId)
+        .doc(chatroomId)
+        .collection(messageCollectionId)
+        .doc(message.id);
+    await ref.set(message.toJson());
+  }
 
   Future<void> createPost(String userId, Post post) async {
     final ref = _db
@@ -72,6 +130,7 @@ class FirestoreDatasource {
     return users.toList();
   }
 
+
   Stream<UserInfo> listenUserInfo(String userId) async* {
     final ref = _db.collection(usersCollectionId).doc(userId);
     final snap = ref.snapshots();
@@ -110,6 +169,50 @@ class FirestoreDatasource {
         final json = e.data();
         return Post.fromJson(json);
       }).toList();
+    });
+  }
+
+  Stream<List<Message>> listenMessages(String uid,String roomId,) async* {
+    final ref = _db
+        .collection(usersCollectionId)
+        .doc(uid)
+        .collection(chatroomCollectionId)
+        .doc(roomId)
+        .collection(messageCollectionId)
+        .orderBy('createdAt');
+    yield* ref.snapshots().map((event) {
+      return event.docs.map((e) {
+        final json = e.data();
+        return Message.fromJson(json);
+      }).toList();
+    });
+  }
+
+  Stream<List<Chatroom>> listenChatRoomList(String uid) async* {
+    final ref = _db
+        .collection(usersCollectionId)
+        .doc(uid)
+        .collection(chatroomCollectionId);
+    yield* ref.snapshots().map((event) {
+      return event.docs.map((e) {
+        final json = e.data();
+        return Chatroom.fromJson(json);
+      }).toList();
+    });
+  }
+
+  Stream<Chatroom> listenChatRoom (String uid, String roomId,) async* {
+    final ref = _db
+        .collection(usersCollectionId)
+        .doc(uid)
+        .collection(chatroomCollectionId)
+        .doc(roomId);
+    yield* ref.snapshots().map((event) {
+      final json = event.data();
+      if(json == null) {
+        throw NotFindReferenceException(ref: ref);
+      }
+      return Chatroom.fromJson(json);
     });
   }
 
