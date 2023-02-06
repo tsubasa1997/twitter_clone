@@ -25,6 +25,7 @@ mixin _$User {
   List<Post> get post => throw _privateConstructorUsedError;
   List<Following> get following => throw _privateConstructorUsedError;
   List<Follower> get follower => throw _privateConstructorUsedError;
+  List<Chatroom> get chatroom => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -41,7 +42,8 @@ abstract class $UserCopyWith<$Res> {
       UserInfo info,
       List<Post> post,
       List<Following> following,
-      List<Follower> follower});
+      List<Follower> follower,
+      List<Chatroom> chatroom});
 
   $UserInfoCopyWith<$Res> get info;
 }
@@ -64,6 +66,7 @@ class _$UserCopyWithImpl<$Res, $Val extends User>
     Object? post = null,
     Object? following = null,
     Object? follower = null,
+    Object? chatroom = null,
   }) {
     return _then(_value.copyWith(
       id: null == id
@@ -86,6 +89,10 @@ class _$UserCopyWithImpl<$Res, $Val extends User>
           ? _value.follower
           : follower // ignore: cast_nullable_to_non_nullable
               as List<Follower>,
+      chatroom: null == chatroom
+          ? _value.chatroom
+          : chatroom // ignore: cast_nullable_to_non_nullable
+              as List<Chatroom>,
     ) as $Val);
   }
 
@@ -109,7 +116,8 @@ abstract class _$$_UserCopyWith<$Res> implements $UserCopyWith<$Res> {
       UserInfo info,
       List<Post> post,
       List<Following> following,
-      List<Follower> follower});
+      List<Follower> follower,
+      List<Chatroom> chatroom});
 
   @override
   $UserInfoCopyWith<$Res> get info;
@@ -129,6 +137,7 @@ class __$$_UserCopyWithImpl<$Res> extends _$UserCopyWithImpl<$Res, _$_User>
     Object? post = null,
     Object? following = null,
     Object? follower = null,
+    Object? chatroom = null,
   }) {
     return _then(_$_User(
       id: null == id
@@ -151,6 +160,10 @@ class __$$_UserCopyWithImpl<$Res> extends _$UserCopyWithImpl<$Res, _$_User>
           ? _value._follower
           : follower // ignore: cast_nullable_to_non_nullable
               as List<Follower>,
+      chatroom: null == chatroom
+          ? _value._chatroom
+          : chatroom // ignore: cast_nullable_to_non_nullable
+              as List<Chatroom>,
     ));
   }
 }
@@ -163,10 +176,12 @@ class _$_User with DiagnosticableTreeMixin implements _User {
       required this.info,
       final List<Post> post = const <Post>[],
       final List<Following> following = const <Following>[],
-      final List<Follower> follower = const <Follower>[]})
+      final List<Follower> follower = const <Follower>[],
+      final List<Chatroom> chatroom = const <Chatroom>[]})
       : _post = post,
         _following = following,
-        _follower = follower;
+        _follower = follower,
+        _chatroom = chatroom;
 
   factory _$_User.fromJson(Map<String, dynamic> json) => _$$_UserFromJson(json);
 
@@ -198,9 +213,17 @@ class _$_User with DiagnosticableTreeMixin implements _User {
     return EqualUnmodifiableListView(_follower);
   }
 
+  final List<Chatroom> _chatroom;
+  @override
+  @JsonKey()
+  List<Chatroom> get chatroom {
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_chatroom);
+  }
+
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'User(id: $id, info: $info, post: $post, following: $following, follower: $follower)';
+    return 'User(id: $id, info: $info, post: $post, following: $following, follower: $follower, chatroom: $chatroom)';
   }
 
   @override
@@ -212,7 +235,8 @@ class _$_User with DiagnosticableTreeMixin implements _User {
       ..add(DiagnosticsProperty('info', info))
       ..add(DiagnosticsProperty('post', post))
       ..add(DiagnosticsProperty('following', following))
-      ..add(DiagnosticsProperty('follower', follower));
+      ..add(DiagnosticsProperty('follower', follower))
+      ..add(DiagnosticsProperty('chatroom', chatroom));
   }
 
   @override
@@ -225,7 +249,8 @@ class _$_User with DiagnosticableTreeMixin implements _User {
             const DeepCollectionEquality().equals(other._post, _post) &&
             const DeepCollectionEquality()
                 .equals(other._following, _following) &&
-            const DeepCollectionEquality().equals(other._follower, _follower));
+            const DeepCollectionEquality().equals(other._follower, _follower) &&
+            const DeepCollectionEquality().equals(other._chatroom, _chatroom));
   }
 
   @JsonKey(ignore: true)
@@ -236,7 +261,8 @@ class _$_User with DiagnosticableTreeMixin implements _User {
       info,
       const DeepCollectionEquality().hash(_post),
       const DeepCollectionEquality().hash(_following),
-      const DeepCollectionEquality().hash(_follower));
+      const DeepCollectionEquality().hash(_follower),
+      const DeepCollectionEquality().hash(_chatroom));
 
   @JsonKey(ignore: true)
   @override
@@ -258,7 +284,8 @@ abstract class _User implements User {
       required final UserInfo info,
       final List<Post> post,
       final List<Following> following,
-      final List<Follower> follower}) = _$_User;
+      final List<Follower> follower,
+      final List<Chatroom> chatroom}) = _$_User;
 
   factory _User.fromJson(Map<String, dynamic> json) = _$_User.fromJson;
 
@@ -272,6 +299,8 @@ abstract class _User implements User {
   List<Following> get following;
   @override
   List<Follower> get follower;
+  @override
+  List<Chatroom> get chatroom;
   @override
   @JsonKey(ignore: true)
   _$$_UserCopyWith<_$_User> get copyWith => throw _privateConstructorUsedError;

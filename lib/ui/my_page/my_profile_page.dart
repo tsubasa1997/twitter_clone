@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:twitter_clone/providers/user_follower_providers.dart';
 import 'package:twitter_clone/ui/widget/my_following_user_page.dart';
 import 'package:twitter_clone/providers/user_tweet_providers.dart';
 import 'package:twitter_clone/providers/user_following_providers.dart';
@@ -24,6 +25,7 @@ class _MyProfilePageState extends ConsumerState<MyProfilePage> {
   @override
   Widget build(BuildContext context) {
     final following = ref.watch(userFollowingProvider(widget.userId));
+    final follower = ref.watch(userFollowerProvider(widget.userId));
     final post = ref.watch(userTweetProvider(widget.userId));
     final info = ref.watch(userInfoProvider(widget.userId));
 
@@ -195,7 +197,7 @@ class _MyProfilePageState extends ConsumerState<MyProfilePage> {
                                   ),
                                 );
                               },
-                              child: following.when(
+                              child: follower.when(
                                 data: (user) {
                                   return Text(
                                     '${user.follower.length} フォロワー',
